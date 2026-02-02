@@ -1,0 +1,13 @@
+-- Seed data for development
+-- Note: Profiles are auto-created when users sign up via the on_auth_user_created trigger
+-- This file is for reference and manual testing only
+
+-- Example: If you need to manually insert a test profile (requires a valid auth.users entry first)
+-- INSERT INTO public.profiles (id, email, display_name, native_language, subscription_tier)
+-- VALUES (
+--   'your-test-user-uuid',
+--   'test@example.com',
+--   'Test User',
+--   'en',
+--   'free'
+-- );
