@@ -6,9 +6,69 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+// Pattern category type matching database CHECK constraint
+export type PatternCategory =
+  | 'weak-forms'
+  | 'reductions'
+  | 'linking'
+  | 'elision'
+  | 'assimilation'
+  | 'flapping';
+
 export type Database = {
   public: {
     Tables: {
+      patterns: {
+        Row: {
+          id: string;
+          category: PatternCategory;
+          level: number;
+          title: string;
+          description: string;
+          phonetic_clear: string | null;
+          phonetic_reduced: string | null;
+          example_sentence: string | null;
+          example_transcription: string | null;
+          audio_slow_url: string | null;
+          audio_fast_url: string | null;
+          tips: string[];
+          difficulty: number;
+          order_index: number;
+        };
+        Insert: {
+          id: string;
+          category: PatternCategory;
+          level: number;
+          title: string;
+          description: string;
+          phonetic_clear?: string | null;
+          phonetic_reduced?: string | null;
+          example_sentence?: string | null;
+          example_transcription?: string | null;
+          audio_slow_url?: string | null;
+          audio_fast_url?: string | null;
+          tips?: string[];
+          difficulty?: number;
+          order_index: number;
+        };
+        Update: {
+          id?: string;
+          category?: PatternCategory;
+          level?: number;
+          title?: string;
+          description?: string;
+          phonetic_clear?: string | null;
+          phonetic_reduced?: string | null;
+          example_sentence?: string | null;
+          example_transcription?: string | null;
+          audio_slow_url?: string | null;
+          audio_fast_url?: string | null;
+          tips?: string[];
+          difficulty?: number;
+          order_index?: number;
+        };
+        Relationships: [];
+      };
       profiles: {
         Row: {
           id: string;
@@ -80,3 +140,7 @@ export type Database = {
 export type Profile = Database['public']['Tables']['profiles']['Row'];
 export type ProfileInsert = Database['public']['Tables']['profiles']['Insert'];
 export type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
+
+export type Pattern = Database['public']['Tables']['patterns']['Row'];
+export type PatternInsert = Database['public']['Tables']['patterns']['Insert'];
+export type PatternUpdate = Database['public']['Tables']['patterns']['Update'];
