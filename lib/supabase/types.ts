@@ -15,9 +15,60 @@ export type PatternCategory =
   | 'assimilation'
   | 'flapping';
 
+// Exercise type matching database CHECK constraint
+export type ExerciseType = 'comparison' | 'discrimination' | 'dictation' | 'speed';
+
 export type Database = {
   public: {
     Tables: {
+      exercise_attempts: {
+        Row: {
+          id: string;
+          user_id: string;
+          pattern_id: string | null;
+          exercise_type: ExerciseType;
+          is_correct: boolean;
+          response_time_ms: number | null;
+          user_input: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          pattern_id?: string | null;
+          exercise_type: ExerciseType;
+          is_correct: boolean;
+          response_time_ms?: number | null;
+          user_input?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          pattern_id?: string | null;
+          exercise_type?: ExerciseType;
+          is_correct?: boolean;
+          response_time_ms?: number | null;
+          user_input?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'exercise_attempts_user_id_fkey';
+            columns: ['user_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'exercise_attempts_pattern_id_fkey';
+            columns: ['pattern_id'];
+            isOneToOne: false;
+            referencedRelation: 'patterns';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
       user_pattern_progress: {
         Row: {
           id: string;
@@ -208,3 +259,10 @@ export type UserPatternProgressInsert =
   Database['public']['Tables']['user_pattern_progress']['Insert'];
 export type UserPatternProgressUpdate =
   Database['public']['Tables']['user_pattern_progress']['Update'];
+
+export type ExerciseAttempt =
+  Database['public']['Tables']['exercise_attempts']['Row'];
+export type ExerciseAttemptInsert =
+  Database['public']['Tables']['exercise_attempts']['Insert'];
+export type ExerciseAttemptUpdate =
+  Database['public']['Tables']['exercise_attempts']['Update'];
