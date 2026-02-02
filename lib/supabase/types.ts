@@ -18,6 +18,63 @@ export type PatternCategory =
 export type Database = {
   public: {
     Tables: {
+      user_pattern_progress: {
+        Row: {
+          id: string;
+          user_id: string;
+          pattern_id: string;
+          mastery_score: number;
+          times_practiced: number;
+          times_correct: number;
+          last_practiced_at: string | null;
+          next_review_at: string | null;
+          ease_factor: number;
+          interval_days: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          pattern_id: string;
+          mastery_score?: number;
+          times_practiced?: number;
+          times_correct?: number;
+          last_practiced_at?: string | null;
+          next_review_at?: string | null;
+          ease_factor?: number;
+          interval_days?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          pattern_id?: string;
+          mastery_score?: number;
+          times_practiced?: number;
+          times_correct?: number;
+          last_practiced_at?: string | null;
+          next_review_at?: string | null;
+          ease_factor?: number;
+          interval_days?: number;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'user_pattern_progress_user_id_fkey';
+            columns: ['user_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'user_pattern_progress_pattern_id_fkey';
+            columns: ['pattern_id'];
+            isOneToOne: false;
+            referencedRelation: 'patterns';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
       patterns: {
         Row: {
           id: string;
@@ -144,3 +201,10 @@ export type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 export type Pattern = Database['public']['Tables']['patterns']['Row'];
 export type PatternInsert = Database['public']['Tables']['patterns']['Insert'];
 export type PatternUpdate = Database['public']['Tables']['patterns']['Update'];
+
+export type UserPatternProgress =
+  Database['public']['Tables']['user_pattern_progress']['Row'];
+export type UserPatternProgressInsert =
+  Database['public']['Tables']['user_pattern_progress']['Insert'];
+export type UserPatternProgressUpdate =
+  Database['public']['Tables']['user_pattern_progress']['Update'];
