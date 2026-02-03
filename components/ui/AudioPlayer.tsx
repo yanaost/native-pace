@@ -1,12 +1,13 @@
 'use client';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, useId } from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
 import SpeedIcon from '@mui/icons-material/Speed';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useAudioStore } from '@/lib/stores/audioStore';
 
 type PlaybackState = 'idle' | 'loading' | 'playing';
 type AudioType = 'slow' | 'fast';
@@ -14,6 +15,7 @@ type AudioType = 'slow' | 'fast';
 export interface AudioPlayerProps {
   slowUrl: string;
   fastUrl: string;
+  audioId?: string;
   onPlaySlow?: () => void;
   onPlayFast?: () => void;
   enableGlobalShortcuts?: boolean;
@@ -22,15 +24,21 @@ export interface AudioPlayerProps {
 export default function AudioPlayer({
   slowUrl,
   fastUrl,
+  audioId: providedAudioId,
   onPlaySlow,
   onPlayFast,
   enableGlobalShortcuts = false,
 }: AudioPlayerProps) {
+  const generatedId = useId();
+  const audioId = providedAudioId || generatedId;
+
   const slowAudioRef = useRef<HTMLAudioElement | null>(null);
   const fastAudioRef = useRef<HTMLAudioElement | null>(null);
   const [playbackState, setPlaybackState] = useState<PlaybackState>('idle');
   const [activeType, setActiveType] = useState<AudioType | null>(null);
   const lastPlayedRef = useRef<AudioType | null>(null);
+
+  const { currentAudioId, play: storePlay, stop: storeStop } = useAudioStore();
 
   // Preload audio on mount
   useEffect(() => {
@@ -50,7 +58,16 @@ export default function AudioPlayer({
     fastAudioRef.current?.pause();
     if (slowAudioRef.current) slowAudioRef.current.currentTime = 0;
     if (fastAudioRef.current) fastAudioRef.current.currentTime = 0;
+    setPlaybackState('idle');
+    setActiveType(null);
   }, []);
+
+  // Stop when another audio starts playing
+  useEffect(() => {
+    if (currentAudioId && currentAudioId !== audioId && playbackState === 'playing') {
+      stopAll();
+    }
+  }, [currentAudioId, audioId, playbackState, stopAll]);
 
   const play = useCallback((type: AudioType) => {
     stopAll();
@@ -59,10 +76,12 @@ export default function AudioPlayer({
 
     setActiveType(type);
     lastPlayedRef.current = type;
+    storePlay(audioId);
 
     const onEnded = () => {
       setPlaybackState('idle');
       setActiveType(null);
+      storeStop();
     };
 
     audio.removeEventListener('ended', onEnded);
@@ -81,7 +100,7 @@ export default function AudioPlayer({
 
     if (type === 'slow') onPlaySlow?.();
     else onPlayFast?.();
-  }, [stopAll, onPlaySlow, onPlayFast]);
+  }, [stopAll, onPlaySlow, onPlayFast, audioId, storePlay, storeStop]);
 
   const replay = useCallback(() => {
     if (lastPlayedRef.current) {
