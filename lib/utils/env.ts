@@ -3,14 +3,14 @@
  *
  * This module validates required environment variables at runtime
  * and provides type-safe access to all environment configuration.
+ *
+ * NOTE: For NEXT_PUBLIC_* variables, we must use direct property access
+ * (e.g., process.env.NEXT_PUBLIC_X) because Next.js replaces these at
+ * build time via string replacement. Dynamic access like process.env[name]
+ * does not get replaced.
  */
 
-/**
- * Validates that a required environment variable is set
- * @throws Error if the variable is missing or empty
- */
-function requireEnv(name: string): string {
-  const value = process.env[name];
+function assertEnv(value: string | undefined, name: string): string {
   if (!value) {
     throw new Error(
       `Missing required environment variable: ${name}\n` +
@@ -21,28 +21,38 @@ function requireEnv(name: string): string {
 }
 
 /**
- * Gets an optional environment variable, returning undefined if not set
- */
-function optionalEnv(name: string): string | undefined {
-  return process.env[name] || undefined;
-}
-
-/**
  * Public environment variables (available in browser)
- * These use the NEXT_PUBLIC_ prefix
+ * These use the NEXT_PUBLIC_ prefix and are replaced at build time
  */
 export const publicEnv = {
   /** Supabase project URL */
-  supabaseUrl: requireEnv('NEXT_PUBLIC_SUPABASE_URL'),
+  get supabaseUrl(): string {
+    return assertEnv(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      'NEXT_PUBLIC_SUPABASE_URL'
+    );
+  },
 
   /** Supabase anonymous/public key */
-  supabaseAnonKey: requireEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY'),
+  get supabaseAnonKey(): string {
+    return assertEnv(
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      'NEXT_PUBLIC_SUPABASE_ANON_KEY'
+    );
+  },
 
   /** Application URL for redirects and links */
-  appUrl: requireEnv('NEXT_PUBLIC_APP_URL'),
+  get appUrl(): string {
+    return assertEnv(
+      process.env.NEXT_PUBLIC_APP_URL,
+      'NEXT_PUBLIC_APP_URL'
+    );
+  },
 
   /** PostHog analytics key (optional, Phase 12) */
-  posthogKey: optionalEnv('NEXT_PUBLIC_POSTHOG_KEY'),
+  get posthogKey(): string | undefined {
+    return process.env.NEXT_PUBLIC_POSTHOG_KEY || undefined;
+  },
 } as const;
 
 /**
@@ -53,16 +63,24 @@ export const publicEnv = {
  */
 export const serverEnv = {
   /** Supabase service role key for admin operations (optional, Phase 1.3) */
-  supabaseServiceRoleKey: optionalEnv('SUPABASE_SERVICE_ROLE_KEY'),
+  get supabaseServiceRoleKey(): string | undefined {
+    return process.env.SUPABASE_SERVICE_ROLE_KEY || undefined;
+  },
 
   /** Lemon Squeezy API key (optional, Phase 10) */
-  lemonSqueezyApiKey: optionalEnv('LEMON_SQUEEZY_API_KEY'),
+  get lemonSqueezyApiKey(): string | undefined {
+    return process.env.LEMON_SQUEEZY_API_KEY || undefined;
+  },
 
   /** Lemon Squeezy store ID (optional, Phase 10) */
-  lemonSqueezyStoreId: optionalEnv('LEMON_SQUEEZY_STORE_ID'),
+  get lemonSqueezyStoreId(): string | undefined {
+    return process.env.LEMON_SQUEEZY_STORE_ID || undefined;
+  },
 
   /** Lemon Squeezy webhook secret (optional, Phase 10) */
-  lemonSqueezyWebhookSecret: optionalEnv('LEMON_SQUEEZY_WEBHOOK_SECRET'),
+  get lemonSqueezyWebhookSecret(): string | undefined {
+    return process.env.LEMON_SQUEEZY_WEBHOOK_SECRET || undefined;
+  },
 } as const;
 
 /**
