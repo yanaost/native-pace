@@ -1,4 +1,4 @@
-import { parseQueryParams } from '../route';
+import { parseQueryParams } from '@/lib/api/patterns-helpers';
 
 describe('parseQueryParams', () => {
   describe('level parameter', () => {
