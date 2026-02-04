@@ -13,8 +13,14 @@ import { createClient } from '@/lib/supabase/client';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import StreakCard from '@/components/dashboard/StreakCard';
+import ProgressChart from '@/components/dashboard/ProgressChart';
 import { getDuePatternsCount } from '@/lib/utils/review-queue';
 import { TOTAL_PATTERNS } from '@/lib/constants/levels';
+import {
+  groupByDay,
+  createWeeklyChartData,
+  type ChartDataPoint,
+} from '@/lib/utils/progress-chart-helpers';
 import {
   formatDashboardGreeting,
   calculateOverallProgress,
@@ -42,6 +48,7 @@ export default function DashboardPage() {
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [patternsLearned, setPatternsLearned] = useState(0);
   const [reviewDueCount, setReviewDueCount] = useState(0);
+  const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const loadDashboardData = useCallback(async () => {
@@ -81,6 +88,20 @@ export default function DashboardPage() {
     // Fetch due patterns count
     const dueCount = await getDuePatternsCount(supabase, user.id);
     setReviewDueCount(dueCount);
+
+    // Fetch exercise attempts for last 7 days for chart
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    const { data: attempts } = await supabase
+      .from('exercise_attempts')
+      .select('created_at')
+      .eq('user_id', user.id)
+      .gte('created_at', sevenDaysAgo.toISOString());
+
+    const dailyCounts = groupByDay(attempts ?? [], (a) => a.created_at);
+    const weeklyData = createWeeklyChartData(dailyCounts);
+    setChartData(weeklyData);
 
     setIsLoading(false);
   }, [router]);
@@ -235,25 +256,9 @@ export default function DashboardPage() {
         </Card>
       )}
 
-      {/* Progress Chart Placeholder - Task 8.1.2 */}
+      {/* Progress Chart */}
       <Card>
-        <Typography variant="h6" gutterBottom>
-          Your Progress
-        </Typography>
-        <Box
-          sx={{
-            height: 150,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            bgcolor: 'grey.100',
-            borderRadius: 1,
-          }}
-        >
-          <Typography color="text.secondary">
-            Progress chart coming soon
-          </Typography>
-        </Box>
+        <ProgressChart data={chartData} title="This Week" />
       </Card>
     </Container>
   );
