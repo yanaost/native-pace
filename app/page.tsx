@@ -10,6 +10,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
+import PricingSection from '@/components/landing/PricingSection';
 import {
   HERO_HEADLINE,
   HERO_SUBHEADLINE,
@@ -193,6 +194,9 @@ export default function LandingPage() {
           </Box>
         </Container>
       </Box>
+
+      {/* Pricing Section */}
+      <PricingSection />
 
       {/* Final CTA Section */}
       <Container maxWidth="md" sx={{ py: 8, textAlign: 'center' }}>
