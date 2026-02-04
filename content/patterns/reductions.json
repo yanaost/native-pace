@@ -1,0 +1,202 @@
+[
+  {
+    "id": "reduction-wanna",
+    "category": "reductions",
+    "level": 1,
+    "title": "Want to → Wanna",
+    "description": "In casual speech, 'want to' is almost always pronounced as 'wanna'. This is one of the most common reductions in English and happens automatically for native speakers.",
+    "phoneticClear": "/wɑːnt tuː/",
+    "phoneticReduced": "/wɑːnə/",
+    "exampleSentence": "I want to go home.",
+    "exampleTranscription": "I wanna go home.",
+    "audioSlowUrl": "/audio/patterns/reduction-wanna-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-wanna-fast.mp3",
+    "tips": [
+      "Listen for the 't' sound disappearing completely",
+      "The 'to' becomes a quick 'uh' sound (schwa)",
+      "This reduction happens in questions too: 'Do you wanna...?'"
+    ],
+    "difficulty": 1,
+    "orderIndex": 1
+  },
+  {
+    "id": "reduction-gonna",
+    "category": "reductions",
+    "level": 1,
+    "title": "Going to → Gonna",
+    "description": "When expressing future intent, 'going to' reduces to 'gonna'. This is standard in spoken English and used by all native speakers in casual conversation.",
+    "phoneticClear": "/ɡoʊɪŋ tuː/",
+    "phoneticReduced": "/ɡʌnə/",
+    "exampleSentence": "I'm going to call you later.",
+    "exampleTranscription": "I'm gonna call you later.",
+    "audioSlowUrl": "/audio/patterns/reduction-gonna-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-gonna-fast.mp3",
+    "tips": [
+      "The 'going' loses its '-ing' ending entirely",
+      "'Gonna' is never written formally but always spoken",
+      "Listen for it in phrases like 'gonna be', 'gonna do', 'gonna have'"
+    ],
+    "difficulty": 1,
+    "orderIndex": 2
+  },
+  {
+    "id": "reduction-hafta",
+    "category": "reductions",
+    "level": 1,
+    "title": "Have to → Hafta",
+    "description": "The phrase 'have to' expressing obligation becomes 'hafta' in natural speech. The 'v' sound changes to 'f' and the 'to' reduces to a schwa.",
+    "phoneticClear": "/hæv tuː/",
+    "phoneticReduced": "/hæftə/",
+    "exampleSentence": "I have to leave now.",
+    "exampleTranscription": "I hafta leave now.",
+    "audioSlowUrl": "/audio/patterns/reduction-hafta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-hafta-fast.mp3",
+    "tips": [
+      "Notice how 'v' becomes 'f' - this is called devoicing",
+      "The stress stays on 'haf', not on 'ta'",
+      "'Has to' becomes 'hasta' with the same pattern"
+    ],
+    "difficulty": 1,
+    "orderIndex": 3
+  },
+  {
+    "id": "reduction-gotta",
+    "category": "reductions",
+    "level": 1,
+    "title": "Got to → Gotta",
+    "description": "Another way to express obligation, 'got to' becomes 'gotta'. The 't' in 'got' often becomes a flap sound, and 'to' reduces completely.",
+    "phoneticClear": "/ɡɑːt tuː/",
+    "phoneticReduced": "/ɡɑːɾə/",
+    "exampleSentence": "I've got to go.",
+    "exampleTranscription": "I've gotta go.",
+    "audioSlowUrl": "/audio/patterns/reduction-gotta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-gotta-fast.mp3",
+    "tips": [
+      "Often used interchangeably with 'hafta'",
+      "The 't' may sound like a quick 'd' (flapping)",
+      "Very common in informal speech: 'You gotta try this!'"
+    ],
+    "difficulty": 1,
+    "orderIndex": 4
+  },
+  {
+    "id": "reduction-kinda",
+    "category": "reductions",
+    "level": 1,
+    "title": "Kind of → Kinda",
+    "description": "The phrase 'kind of' meaning 'somewhat' or 'sort of' reduces to 'kinda'. The 'd' and 'of' merge together into a simple schwa ending.",
+    "phoneticClear": "/kaɪnd ʌv/",
+    "phoneticReduced": "/kaɪndə/",
+    "exampleSentence": "It's kind of cold today.",
+    "exampleTranscription": "It's kinda cold today.",
+    "audioSlowUrl": "/audio/patterns/reduction-kinda-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-kinda-fast.mp3",
+    "tips": [
+      "Used as a softener: 'I kinda like it' sounds less direct",
+      "The 'of' completely disappears into a schwa",
+      "Very common in American English casual speech"
+    ],
+    "difficulty": 1,
+    "orderIndex": 5
+  },
+  {
+    "id": "reduction-lotta",
+    "category": "reductions",
+    "level": 1,
+    "title": "Lot of → Lotta",
+    "description": "When saying 'a lot of', the phrase reduces to 'a lotta'. The 'f' in 'of' disappears and the 'o' becomes a schwa.",
+    "phoneticClear": "/lɑːt ʌv/",
+    "phoneticReduced": "/lɑːɾə/",
+    "exampleSentence": "There are a lot of people here.",
+    "exampleTranscription": "There are a lotta people here.",
+    "audioSlowUrl": "/audio/patterns/reduction-lotta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-lotta-fast.mp3",
+    "tips": [
+      "The 't' often becomes a flap (sounds like a quick 'd')",
+      "Listen for this in 'lotta time', 'lotta money', 'lotta work'",
+      "The word 'a' before 'lotta' may also reduce to just a schwa"
+    ],
+    "difficulty": 1,
+    "orderIndex": 6
+  },
+  {
+    "id": "reduction-outta",
+    "category": "reductions",
+    "level": 1,
+    "title": "Out of → Outta",
+    "description": "The phrase 'out of' reduces to 'outta'. The 't' at the end of 'out' connects with the following vowel, and 'of' becomes a schwa.",
+    "phoneticClear": "/aʊt ʌv/",
+    "phoneticReduced": "/aʊɾə/",
+    "exampleSentence": "Get out of here!",
+    "exampleTranscription": "Get outta here!",
+    "audioSlowUrl": "/audio/patterns/reduction-outta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-outta-fast.mp3",
+    "tips": [
+      "Very common in phrases like 'outta time', 'outta luck', 'outta control'",
+      "The 't' becomes a flap between the vowels",
+      "Often heard as a complete phrase: 'Get outta here!' (expression of disbelief)"
+    ],
+    "difficulty": 1,
+    "orderIndex": 7
+  },
+  {
+    "id": "reduction-sorta",
+    "category": "reductions",
+    "level": 1,
+    "title": "Sort of → Sorta",
+    "description": "Similar to 'kinda', 'sort of' reduces to 'sorta'. It means 'somewhat' or 'in a way' and is very common in casual speech.",
+    "phoneticClear": "/sɔːrt ʌv/",
+    "phoneticReduced": "/sɔːrɾə/",
+    "exampleSentence": "I sort of understand.",
+    "exampleTranscription": "I sorta understand.",
+    "audioSlowUrl": "/audio/patterns/reduction-sorta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-sorta-fast.mp3",
+    "tips": [
+      "Used interchangeably with 'kinda'",
+      "The 't' becomes a flap sound",
+      "Often used to hedge or soften statements"
+    ],
+    "difficulty": 1,
+    "orderIndex": 8
+  },
+  {
+    "id": "reduction-lemme",
+    "category": "reductions",
+    "level": 2,
+    "title": "Let me → Lemme",
+    "description": "The phrase 'let me' becomes 'lemme' in fast speech. The 't' disappears and the two words merge into one.",
+    "phoneticClear": "/let miː/",
+    "phoneticReduced": "/lemi/",
+    "exampleSentence": "Let me think about it.",
+    "exampleTranscription": "Lemme think about it.",
+    "audioSlowUrl": "/audio/patterns/reduction-lemme-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-lemme-fast.mp3",
+    "tips": [
+      "The 't' completely disappears",
+      "Common in requests: 'Lemme see', 'Lemme know', 'Lemme try'",
+      "The stress is on the first syllable: LEM-me"
+    ],
+    "difficulty": 2,
+    "orderIndex": 21
+  },
+  {
+    "id": "reduction-gimme",
+    "category": "reductions",
+    "level": 2,
+    "title": "Give me → Gimme",
+    "description": "In casual speech, 'give me' becomes 'gimme'. The 'v' sound changes and the two words merge completely.",
+    "phoneticClear": "/ɡɪv miː/",
+    "phoneticReduced": "/ɡɪmi/",
+    "exampleSentence": "Give me a break!",
+    "exampleTranscription": "Gimme a break!",
+    "audioSlowUrl": "/audio/patterns/reduction-gimme-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-gimme-fast.mp3",
+    "tips": [
+      "The 'v' changes to 'm' through assimilation",
+      "Very common in informal requests: 'Gimme a second'",
+      "Often heard in the phrase 'Gimme a break!' (expressing frustration)"
+    ],
+    "difficulty": 2,
+    "orderIndex": 22
+  }
+]
