@@ -2,6 +2,9 @@ import {
   canAccessLevel,
   getLevelPatternCount,
   isLevelLocked,
+  findNextUnlearnedPattern,
+  calculateCompletionPercentage,
+  PatternWithProgress,
 } from '../level-access';
 import { LEVELS, Level } from '@/lib/constants/levels';
 import type { SubscriptionTier } from '@/types/user';
@@ -229,5 +232,131 @@ describe('level lock states summary', () => {
         expect(unlockedLevels).toEqual(expectedUnlocked);
       });
     });
+  });
+});
+
+describe('findNextUnlearnedPattern', () => {
+  it('should return the first incomplete pattern', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 30, isCompleted: false },
+      { id: 'p3', title: 'Pattern 3', orderIndex: 3, masteryScore: 0, isCompleted: false },
+    ];
+
+    const next = findNextUnlearnedPattern(patterns);
+    expect(next).not.toBeNull();
+    expect(next!.id).toBe('p2');
+  });
+
+  it('should return null when all patterns are completed', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 90, isCompleted: true },
+      { id: 'p3', title: 'Pattern 3', orderIndex: 3, masteryScore: 100, isCompleted: true },
+    ];
+
+    const next = findNextUnlearnedPattern(patterns);
+    expect(next).toBeNull();
+  });
+
+  it('should return null for empty array', () => {
+    const next = findNextUnlearnedPattern([]);
+    expect(next).toBeNull();
+  });
+
+  it('should return the first pattern when none are completed', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 0, isCompleted: false },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 0, isCompleted: false },
+    ];
+
+    const next = findNextUnlearnedPattern(patterns);
+    expect(next).not.toBeNull();
+    expect(next!.id).toBe('p1');
+  });
+
+  it('should sort by orderIndex before finding next', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p3', title: 'Pattern 3', orderIndex: 3, masteryScore: 0, isCompleted: false },
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 0, isCompleted: false },
+    ];
+
+    const next = findNextUnlearnedPattern(patterns);
+    expect(next).not.toBeNull();
+    expect(next!.id).toBe('p2');
+  });
+
+  it('should handle patterns with gaps in completion', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 0, isCompleted: false },
+      { id: 'p3', title: 'Pattern 3', orderIndex: 3, masteryScore: 90, isCompleted: true },
+      { id: 'p4', title: 'Pattern 4', orderIndex: 4, masteryScore: 0, isCompleted: false },
+    ];
+
+    const next = findNextUnlearnedPattern(patterns);
+    expect(next).not.toBeNull();
+    expect(next!.id).toBe('p2');
+  });
+});
+
+describe('calculateCompletionPercentage', () => {
+  it('should return 0 for empty array', () => {
+    expect(calculateCompletionPercentage([])).toBe(0);
+  });
+
+  it('should return 0 when no patterns are completed', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 0, isCompleted: false },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 30, isCompleted: false },
+    ];
+
+    expect(calculateCompletionPercentage(patterns)).toBe(0);
+  });
+
+  it('should return 100 when all patterns are completed', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 90, isCompleted: true },
+    ];
+
+    expect(calculateCompletionPercentage(patterns)).toBe(100);
+  });
+
+  it('should return 50 when half are completed', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 30, isCompleted: false },
+    ];
+
+    expect(calculateCompletionPercentage(patterns)).toBe(50);
+  });
+
+  it('should calculate correct percentage for various completion states', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+      { id: 'p2', title: 'Pattern 2', orderIndex: 2, masteryScore: 90, isCompleted: true },
+      { id: 'p3', title: 'Pattern 3', orderIndex: 3, masteryScore: 0, isCompleted: false },
+      { id: 'p4', title: 'Pattern 4', orderIndex: 4, masteryScore: 30, isCompleted: false },
+    ];
+
+    expect(calculateCompletionPercentage(patterns)).toBe(50);
+  });
+
+  it('should handle single completed pattern', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 80, isCompleted: true },
+    ];
+
+    expect(calculateCompletionPercentage(patterns)).toBe(100);
+  });
+
+  it('should handle single incomplete pattern', () => {
+    const patterns: PatternWithProgress[] = [
+      { id: 'p1', title: 'Pattern 1', orderIndex: 1, masteryScore: 30, isCompleted: false },
+    ];
+
+    expect(calculateCompletionPercentage(patterns)).toBe(0);
   });
 });
