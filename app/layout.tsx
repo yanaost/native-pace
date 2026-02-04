@@ -3,8 +3,9 @@ import ThemeRegistry from '@/lib/theme/ThemeRegistry';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'NativePace - Running Training Platform',
-  description: 'Train smarter with personalized running workouts based on your natural pace',
+  title: 'NativePace - Understand Native English',
+  description: 'Learn to understand fast native English speech',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
