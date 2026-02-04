@@ -69,6 +69,44 @@ export type Database = {
           }
         ];
       };
+      practice_sessions: {
+        Row: {
+          id: string;
+          user_id: string;
+          started_at: string;
+          ended_at: string | null;
+          patterns_practiced: number;
+          exercises_completed: number;
+          correct_answers: number;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          started_at?: string;
+          ended_at?: string | null;
+          patterns_practiced?: number;
+          exercises_completed?: number;
+          correct_answers?: number;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          started_at?: string;
+          ended_at?: string | null;
+          patterns_practiced?: number;
+          exercises_completed?: number;
+          correct_answers?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'practice_sessions_user_id_fkey';
+            columns: ['user_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
       user_pattern_progress: {
         Row: {
           id: string;
@@ -266,3 +304,10 @@ export type ExerciseAttemptInsert =
   Database['public']['Tables']['exercise_attempts']['Insert'];
 export type ExerciseAttemptUpdate =
   Database['public']['Tables']['exercise_attempts']['Update'];
+
+export type PracticeSession =
+  Database['public']['Tables']['practice_sessions']['Row'];
+export type PracticeSessionInsert =
+  Database['public']['Tables']['practice_sessions']['Insert'];
+export type PracticeSessionUpdate =
+  Database['public']['Tables']['practice_sessions']['Update'];
