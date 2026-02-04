@@ -10,8 +10,8 @@ describe('reductions.json', () => {
       expect(Array.isArray(patterns)).toBe(true);
     });
 
-    it('should contain exactly 10 patterns', () => {
-      expect(patterns).toHaveLength(10);
+    it('should contain exactly 38 patterns', () => {
+      expect(patterns).toHaveLength(38);
     });
   });
 
@@ -43,9 +43,9 @@ describe('reductions.json', () => {
       expect(level1Patterns).toHaveLength(8);
     });
 
-    it('should have level 2 for patterns 9-10 (Common Reductions)', () => {
+    it('should have level 2 for patterns 21-50 (Common Reductions)', () => {
       const level2Patterns = patterns.filter((p) => p.level === 2);
-      expect(level2Patterns).toHaveLength(2);
+      expect(level2Patterns).toHaveLength(30);
     });
 
     it('should have valid level values (1-6)', () => {
@@ -158,10 +158,11 @@ describe('reductions.json', () => {
       expect(orderIndices).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
     });
 
-    it('should have orderIndex 21-22 for Level 2 patterns', () => {
+    it('should have orderIndex 21-50 for Level 2 patterns', () => {
       const level2Patterns = patterns.filter((p) => p.level === 2);
       const orderIndices = level2Patterns.map((p) => p.orderIndex).sort((a, b) => a - b);
-      expect(orderIndices).toEqual([21, 22]);
+      const expected = Array.from({ length: 30 }, (_, i) => 21 + i);
+      expect(orderIndices).toEqual(expected);
     });
   });
 

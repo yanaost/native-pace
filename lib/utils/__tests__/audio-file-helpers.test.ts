@@ -1,13 +1,16 @@
 import {
   AUDIO_PATTERNS_DIR,
   LEVEL_1_PATTERN_IDS,
+  LEVEL_2_PATTERN_IDS,
   AUDIO_VARIANTS,
   getLevel1PatternIds,
+  getLevel2PatternIds,
   getAudioFilename,
   getAudioFilePath,
   getExpectedAudioFiles,
   checkAudioFileExists,
   verifyAudioFiles,
+  verifyLevel2AudioFiles,
   getAudioVerificationSummary,
 } from '../audio-file-helpers';
 
@@ -65,6 +68,50 @@ describe('getLevel1PatternIds', () => {
     const ids = getLevel1PatternIds();
     expect(ids).toHaveLength(20);
     expect(ids).toEqual(LEVEL_1_PATTERN_IDS);
+  });
+});
+
+describe('LEVEL_2_PATTERN_IDS', () => {
+  it('should have exactly 30 patterns', () => {
+    expect(LEVEL_2_PATTERN_IDS).toHaveLength(30);
+  });
+
+  it('should include lemme and gimme', () => {
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-lemme');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-gimme');
+  });
+
+  it('should include shoulda/coulda/woulda patterns', () => {
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-shoulda');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-coulda');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-woulda');
+  });
+
+  it('should include -cha patterns', () => {
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-whatcha');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-gotcha');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-betcha');
+  });
+
+  it('should include -ja patterns', () => {
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-didja');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-wouldja');
+    expect(LEVEL_2_PATTERN_IDS).toContain('reduction-couldja');
+  });
+});
+
+describe('getLevel2PatternIds', () => {
+  it('should return all Level 2 pattern IDs', () => {
+    const ids = getLevel2PatternIds();
+    expect(ids).toHaveLength(30);
+    expect(ids).toEqual(LEVEL_2_PATTERN_IDS);
+  });
+});
+
+describe('verifyLevel2AudioFiles', () => {
+  it('should return 60 files (30 patterns x 2 variants)', () => {
+    const files = verifyLevel2AudioFiles();
+    expect(files).toHaveLength(60);
   });
 });
 

@@ -36,6 +36,40 @@ export const LEVEL_1_PATTERN_IDS = [
   'weak-form-were',
 ] as const;
 
+/** Level 2 pattern IDs (orderIndex 21-50) */
+export const LEVEL_2_PATTERN_IDS = [
+  'reduction-lemme',
+  'reduction-gimme',
+  'reduction-shoulda',
+  'reduction-coulda',
+  'reduction-woulda',
+  'reduction-musta',
+  'reduction-mighta',
+  'reduction-oughta',
+  'reduction-useta',
+  'reduction-supposta',
+  'reduction-dunno',
+  'reduction-whatcha',
+  'reduction-gotcha',
+  'reduction-betcha',
+  'reduction-letcha',
+  'reduction-getcha',
+  'reduction-meetcha',
+  'reduction-didja',
+  'reduction-wouldja',
+  'reduction-couldja',
+  'reduction-doncha',
+  'reduction-wontcha',
+  'reduction-cantcha',
+  'reduction-tellim',
+  'reduction-teller',
+  'reduction-askim',
+  'reduction-asker',
+  'reduction-cmon',
+  'reduction-yknow',
+  'reduction-imma',
+] as const;
+
 /** Audio speed variants */
 export const AUDIO_VARIANTS = ['slow', 'fast'] as const;
 
@@ -56,6 +90,13 @@ export interface AudioFileInfo {
  */
 export function getLevel1PatternIds(): readonly string[] {
   return LEVEL_1_PATTERN_IDS;
+}
+
+/**
+ * Get Level 2 pattern IDs.
+ */
+export function getLevel2PatternIds(): readonly string[] {
+  return LEVEL_2_PATTERN_IDS;
 }
 
 /**
@@ -121,6 +162,13 @@ export function verifyAudioFiles(patternIds: readonly string[]): AudioFileInfo[]
  */
 export function verifyLevel1AudioFiles(): AudioFileInfo[] {
   return verifyAudioFiles(LEVEL_1_PATTERN_IDS);
+}
+
+/**
+ * Verify all Level 2 audio files exist.
+ */
+export function verifyLevel2AudioFiles(): AudioFileInfo[] {
+  return verifyAudioFiles(LEVEL_2_PATTERN_IDS);
 }
 
 /**

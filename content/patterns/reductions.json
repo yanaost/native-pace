@@ -198,5 +198,565 @@
     ],
     "difficulty": 2,
     "orderIndex": 22
+  },
+  {
+    "id": "reduction-shoulda",
+    "category": "reductions",
+    "level": 2,
+    "title": "Should have → Shoulda",
+    "description": "The phrase 'should have' reduces to 'shoulda'. The 'have' completely changes to a schwa sound.",
+    "phoneticClear": "/ʃʊd hæv/",
+    "phoneticReduced": "/ʃʊdə/",
+    "exampleSentence": "I should have called you.",
+    "exampleTranscription": "I shoulda called you.",
+    "audioSlowUrl": "/audio/patterns/reduction-shoulda-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-shoulda-fast.mp3",
+    "tips": [
+      "The 'have' becomes just 'a' sound",
+      "Often confused with 'should of' in writing (incorrect)",
+      "Same pattern applies to coulda, woulda, musta"
+    ],
+    "difficulty": 2,
+    "orderIndex": 23
+  },
+  {
+    "id": "reduction-coulda",
+    "category": "reductions",
+    "level": 2,
+    "title": "Could have → Coulda",
+    "description": "The phrase 'could have' reduces to 'coulda'. This is one of the most common 'have' reductions.",
+    "phoneticClear": "/kʊd hæv/",
+    "phoneticReduced": "/kʊdə/",
+    "exampleSentence": "You could have told me.",
+    "exampleTranscription": "You coulda told me.",
+    "audioSlowUrl": "/audio/patterns/reduction-coulda-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-coulda-fast.mp3",
+    "tips": [
+      "Sounds exactly like 'coulda' not 'could of'",
+      "The 'd' connects directly to the schwa",
+      "Very common in expressing missed opportunities"
+    ],
+    "difficulty": 2,
+    "orderIndex": 24
+  },
+  {
+    "id": "reduction-woulda",
+    "category": "reductions",
+    "level": 2,
+    "title": "Would have → Woulda",
+    "description": "The phrase 'would have' reduces to 'woulda'. The 'have' disappears into a simple schwa.",
+    "phoneticClear": "/wʊd hæv/",
+    "phoneticReduced": "/wʊdə/",
+    "exampleSentence": "I would have helped you.",
+    "exampleTranscription": "I woulda helped you.",
+    "audioSlowUrl": "/audio/patterns/reduction-woulda-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-woulda-fast.mp3",
+    "tips": [
+      "Part of the shoulda/coulda/woulda trio",
+      "Used in conditional sentences",
+      "The 'l' is often silent: 'wudda'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 25
+  },
+  {
+    "id": "reduction-musta",
+    "category": "reductions",
+    "level": 2,
+    "title": "Must have → Musta",
+    "description": "The phrase 'must have' reduces to 'musta'. Used for deductions about the past.",
+    "phoneticClear": "/mʌst hæv/",
+    "phoneticReduced": "/mʌstə/",
+    "exampleSentence": "She must have forgotten.",
+    "exampleTranscription": "She musta forgotten.",
+    "audioSlowUrl": "/audio/patterns/reduction-musta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-musta-fast.mp3",
+    "tips": [
+      "Used when making logical conclusions",
+      "The 't' often becomes a flap sound",
+      "Common in 'musta been', 'musta had'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 26
+  },
+  {
+    "id": "reduction-mighta",
+    "category": "reductions",
+    "level": 2,
+    "title": "Might have → Mighta",
+    "description": "The phrase 'might have' reduces to 'mighta'. Expresses possibility in the past.",
+    "phoneticClear": "/maɪt hæv/",
+    "phoneticReduced": "/maɪtə/",
+    "exampleSentence": "He might have left early.",
+    "exampleTranscription": "He mighta left early.",
+    "audioSlowUrl": "/audio/patterns/reduction-mighta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-mighta-fast.mp3",
+    "tips": [
+      "Similar pattern to coulda, woulda, shoulda",
+      "Used for uncertain past possibilities",
+      "The 't' connects to the schwa"
+    ],
+    "difficulty": 2,
+    "orderIndex": 27
+  },
+  {
+    "id": "reduction-oughta",
+    "category": "reductions",
+    "level": 2,
+    "title": "Ought to → Oughta",
+    "description": "The phrase 'ought to' reduces to 'oughta'. Expresses obligation or recommendation.",
+    "phoneticClear": "/ɔːt tuː/",
+    "phoneticReduced": "/ɔːtə/",
+    "exampleSentence": "You ought to try this.",
+    "exampleTranscription": "You oughta try this.",
+    "audioSlowUrl": "/audio/patterns/reduction-oughta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-oughta-fast.mp3",
+    "tips": [
+      "Similar to 'should' in meaning",
+      "The 'to' becomes a quick schwa",
+      "More common in American English"
+    ],
+    "difficulty": 2,
+    "orderIndex": 28
+  },
+  {
+    "id": "reduction-useta",
+    "category": "reductions",
+    "level": 2,
+    "title": "Used to → Useta",
+    "description": "The phrase 'used to' reduces to 'useta'. Describes past habits or states.",
+    "phoneticClear": "/juːst tuː/",
+    "phoneticReduced": "/juːstə/",
+    "exampleSentence": "I used to live there.",
+    "exampleTranscription": "I useta live there.",
+    "audioSlowUrl": "/audio/patterns/reduction-useta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-useta-fast.mp3",
+    "tips": [
+      "The 'd' often disappears completely",
+      "Common when talking about the past",
+      "Don't confuse with 'use to' (incorrect in past tense)"
+    ],
+    "difficulty": 2,
+    "orderIndex": 29
+  },
+  {
+    "id": "reduction-supposta",
+    "category": "reductions",
+    "level": 2,
+    "title": "Supposed to → Supposta",
+    "description": "The phrase 'supposed to' reduces to 'supposta'. Expresses expectation or obligation.",
+    "phoneticClear": "/səˈpoʊzd tuː/",
+    "phoneticReduced": "/səˈpoʊstə/",
+    "exampleSentence": "You're supposed to be here.",
+    "exampleTranscription": "You're supposta be here.",
+    "audioSlowUrl": "/audio/patterns/reduction-supposta-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-supposta-fast.mp3",
+    "tips": [
+      "The 'd' sound often drops",
+      "Common in 'supposta be', 'supposta do'",
+      "The 'to' reduces to schwa"
+    ],
+    "difficulty": 2,
+    "orderIndex": 30
+  },
+  {
+    "id": "reduction-dunno",
+    "category": "reductions",
+    "level": 2,
+    "title": "Don't know → Dunno",
+    "description": "The phrase 'don't know' reduces to 'dunno' or 'I dunno'. Very common in casual speech.",
+    "phoneticClear": "/doʊnt noʊ/",
+    "phoneticReduced": "/dənoʊ/",
+    "exampleSentence": "I don't know what happened.",
+    "exampleTranscription": "I dunno what happened.",
+    "audioSlowUrl": "/audio/patterns/reduction-dunno-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-dunno-fast.mp3",
+    "tips": [
+      "The 't' in 'don't' disappears",
+      "Often said with a shrug",
+      "Can sound like 'I'unno' in very fast speech"
+    ],
+    "difficulty": 2,
+    "orderIndex": 31
+  },
+  {
+    "id": "reduction-whatcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "What are you → Whatcha",
+    "description": "The phrase 'what are you' or 'what do you' reduces to 'whatcha'. Common in questions.",
+    "phoneticClear": "/wʌt ɑːr juː/",
+    "phoneticReduced": "/wʌtʃə/",
+    "exampleSentence": "What are you doing?",
+    "exampleTranscription": "Whatcha doing?",
+    "audioSlowUrl": "/audio/patterns/reduction-whatcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-whatcha-fast.mp3",
+    "tips": [
+      "The 't' and 'y' combine to make 'ch' sound",
+      "Can mean 'what are you' or 'what do you'",
+      "Common in 'Whatcha doing?', 'Whatcha want?'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 32
+  },
+  {
+    "id": "reduction-gotcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Got you → Gotcha",
+    "description": "The phrase 'got you' reduces to 'gotcha'. Can mean 'I understand' or 'I caught you'.",
+    "phoneticClear": "/ɡɑːt juː/",
+    "phoneticReduced": "/ɡɑːtʃə/",
+    "exampleSentence": "I got you covered.",
+    "exampleTranscription": "I gotcha covered.",
+    "audioSlowUrl": "/audio/patterns/reduction-gotcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-gotcha-fast.mp3",
+    "tips": [
+      "The 't' and 'y' combine to make 'ch'",
+      "Often used alone to mean 'I understand'",
+      "Also used playfully when catching someone"
+    ],
+    "difficulty": 2,
+    "orderIndex": 33
+  },
+  {
+    "id": "reduction-betcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Bet you → Betcha",
+    "description": "The phrase 'bet you' or 'I bet you' reduces to 'betcha'. Expresses confidence or a wager.",
+    "phoneticClear": "/bet juː/",
+    "phoneticReduced": "/betʃə/",
+    "exampleSentence": "I bet you can't do it.",
+    "exampleTranscription": "I betcha can't do it.",
+    "audioSlowUrl": "/audio/patterns/reduction-betcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-betcha-fast.mp3",
+    "tips": [
+      "Same 't+y=ch' pattern as gotcha",
+      "Often used for challenges or predictions",
+      "Can express certainty: 'Betcha anything!'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 34
+  },
+  {
+    "id": "reduction-letcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Let you → Letcha",
+    "description": "The phrase 'let you' reduces to 'letcha'. Common in offers and permissions.",
+    "phoneticClear": "/let juː/",
+    "phoneticReduced": "/letʃə/",
+    "exampleSentence": "I'll let you know.",
+    "exampleTranscription": "I'll letcha know.",
+    "audioSlowUrl": "/audio/patterns/reduction-letcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-letcha-fast.mp3",
+    "tips": [
+      "Same pattern as gotcha, betcha",
+      "Very common in 'letcha know', 'letcha go'",
+      "The 'll' before often reduces too"
+    ],
+    "difficulty": 2,
+    "orderIndex": 35
+  },
+  {
+    "id": "reduction-getcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Get you → Getcha",
+    "description": "The phrase 'get you' reduces to 'getcha'. Used in various contexts.",
+    "phoneticClear": "/ɡet juː/",
+    "phoneticReduced": "/ɡetʃə/",
+    "exampleSentence": "I'll get you a drink.",
+    "exampleTranscription": "I'll getcha a drink.",
+    "audioSlowUrl": "/audio/patterns/reduction-getcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-getcha-fast.mp3",
+    "tips": [
+      "Same 't+y=ch' pattern",
+      "Common in offers: 'Lemme getcha something'",
+      "Can also be threatening: 'I'll getcha!'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 36
+  },
+  {
+    "id": "reduction-meetcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Meet you → Meetcha",
+    "description": "The phrase 'meet you' reduces to 'meetcha'. Common in greetings and arrangements.",
+    "phoneticClear": "/miːt juː/",
+    "phoneticReduced": "/miːtʃə/",
+    "exampleSentence": "Nice to meet you.",
+    "exampleTranscription": "Nice to meetcha.",
+    "audioSlowUrl": "/audio/patterns/reduction-meetcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-meetcha-fast.mp3",
+    "tips": [
+      "Very common in 'Nice to meetcha'",
+      "Same pattern as gotcha, betcha series",
+      "Also in 'I'll meetcha there'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 37
+  },
+  {
+    "id": "reduction-didja",
+    "category": "reductions",
+    "level": 2,
+    "title": "Did you → Didja",
+    "description": "The question phrase 'did you' reduces to 'didja'. Very common in past tense questions.",
+    "phoneticClear": "/dɪd juː/",
+    "phoneticReduced": "/dɪdʒə/",
+    "exampleSentence": "Did you see that?",
+    "exampleTranscription": "Didja see that?",
+    "audioSlowUrl": "/audio/patterns/reduction-didja-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-didja-fast.mp3",
+    "tips": [
+      "The 'd+y' creates a 'j' sound (palatalization)",
+      "Common in all past questions",
+      "Can sound like 'Dija' or 'Djya'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 38
+  },
+  {
+    "id": "reduction-wouldja",
+    "category": "reductions",
+    "level": 2,
+    "title": "Would you → Wouldja",
+    "description": "The phrase 'would you' reduces to 'wouldja'. Common in polite requests.",
+    "phoneticClear": "/wʊd juː/",
+    "phoneticReduced": "/wʊdʒə/",
+    "exampleSentence": "Would you like some coffee?",
+    "exampleTranscription": "Wouldja like some coffee?",
+    "audioSlowUrl": "/audio/patterns/reduction-wouldja-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-wouldja-fast.mp3",
+    "tips": [
+      "The 'd+y' creates a 'j' sound",
+      "Common in offers and requests",
+      "Also in 'Wouldja mind?', 'Wouldja believe it?'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 39
+  },
+  {
+    "id": "reduction-couldja",
+    "category": "reductions",
+    "level": 2,
+    "title": "Could you → Couldja",
+    "description": "The phrase 'could you' reduces to 'couldja'. Used for polite requests.",
+    "phoneticClear": "/kʊd juː/",
+    "phoneticReduced": "/kʊdʒə/",
+    "exampleSentence": "Could you help me?",
+    "exampleTranscription": "Couldja help me?",
+    "audioSlowUrl": "/audio/patterns/reduction-couldja-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-couldja-fast.mp3",
+    "tips": [
+      "Same pattern as wouldja, didja",
+      "Very common in polite requests",
+      "The 'l' is often silent"
+    ],
+    "difficulty": 2,
+    "orderIndex": 40
+  },
+  {
+    "id": "reduction-doncha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Don't you → Doncha",
+    "description": "The phrase 'don't you' reduces to 'doncha'. Common in tag questions and confirmations.",
+    "phoneticClear": "/doʊnt juː/",
+    "phoneticReduced": "/doʊntʃə/",
+    "exampleSentence": "Don't you think so?",
+    "exampleTranscription": "Doncha think so?",
+    "audioSlowUrl": "/audio/patterns/reduction-doncha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-doncha-fast.mp3",
+    "tips": [
+      "The 't+y' makes a 'ch' sound",
+      "Very common in seeking agreement",
+      "Famous in 'Doncha wish your girlfriend...'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 41
+  },
+  {
+    "id": "reduction-wontcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Won't you → Wontcha",
+    "description": "The phrase 'won't you' reduces to 'wontcha'. Used in invitations and requests.",
+    "phoneticClear": "/woʊnt juː/",
+    "phoneticReduced": "/woʊntʃə/",
+    "exampleSentence": "Won't you stay for dinner?",
+    "exampleTranscription": "Wontcha stay for dinner?",
+    "audioSlowUrl": "/audio/patterns/reduction-wontcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-wontcha-fast.mp3",
+    "tips": [
+      "Same pattern as doncha",
+      "Used for polite invitations",
+      "Common in 'Wontcha be my neighbor?'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 42
+  },
+  {
+    "id": "reduction-cantcha",
+    "category": "reductions",
+    "level": 2,
+    "title": "Can't you → Cantcha",
+    "description": "The phrase 'can't you' reduces to 'cantcha'. Often expresses frustration or surprise.",
+    "phoneticClear": "/kænt juː/",
+    "phoneticReduced": "/kæntʃə/",
+    "exampleSentence": "Can't you see I'm busy?",
+    "exampleTranscription": "Cantcha see I'm busy?",
+    "audioSlowUrl": "/audio/patterns/reduction-cantcha-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-cantcha-fast.mp3",
+    "tips": [
+      "Same pattern as doncha, wontcha",
+      "Often expresses exasperation",
+      "Can sound rhetorical or frustrated"
+    ],
+    "difficulty": 2,
+    "orderIndex": 43
+  },
+  {
+    "id": "reduction-tellim",
+    "category": "reductions",
+    "level": 2,
+    "title": "Tell him → Tellim",
+    "description": "The phrase 'tell him' reduces to 'tellim'. The 'h' drops and words merge.",
+    "phoneticClear": "/tel hɪm/",
+    "phoneticReduced": "/telɪm/",
+    "exampleSentence": "Go tell him the news.",
+    "exampleTranscription": "Go tellim the news.",
+    "audioSlowUrl": "/audio/patterns/reduction-tellim-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-tellim-fast.mp3",
+    "tips": [
+      "The 'h' in 'him' drops completely",
+      "Same pattern with other verbs: 'askim', 'givin'",
+      "Very common in casual speech"
+    ],
+    "difficulty": 2,
+    "orderIndex": 44
+  },
+  {
+    "id": "reduction-teller",
+    "category": "reductions",
+    "level": 2,
+    "title": "Tell her → Teller",
+    "description": "The phrase 'tell her' reduces to 'teller'. The 'h' drops and words connect.",
+    "phoneticClear": "/tel hɜːr/",
+    "phoneticReduced": "/telər/",
+    "exampleSentence": "Don't tell her yet.",
+    "exampleTranscription": "Don't teller yet.",
+    "audioSlowUrl": "/audio/patterns/reduction-teller-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-teller-fast.mp3",
+    "tips": [
+      "Sounds just like 'teller' (bank teller)",
+      "The 'h' in 'her' disappears",
+      "Same with 'asker', 'giver'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 45
+  },
+  {
+    "id": "reduction-askim",
+    "category": "reductions",
+    "level": 2,
+    "title": "Ask him → Askim",
+    "description": "The phrase 'ask him' reduces to 'askim'. The 'h' drops and words connect.",
+    "phoneticClear": "/æsk hɪm/",
+    "phoneticReduced": "/æskɪm/",
+    "exampleSentence": "Just ask him yourself.",
+    "exampleTranscription": "Just askim yourself.",
+    "audioSlowUrl": "/audio/patterns/reduction-askim-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-askim-fast.mp3",
+    "tips": [
+      "The 'h' completely disappears",
+      "The 'k' connects directly to 'im'",
+      "Same pattern as tellim"
+    ],
+    "difficulty": 2,
+    "orderIndex": 46
+  },
+  {
+    "id": "reduction-asker",
+    "category": "reductions",
+    "level": 2,
+    "title": "Ask her → Asker",
+    "description": "The phrase 'ask her' reduces to 'asker'. The 'h' drops and sounds merge.",
+    "phoneticClear": "/æsk hɜːr/",
+    "phoneticReduced": "/æskər/",
+    "exampleSentence": "You should ask her out.",
+    "exampleTranscription": "You should asker out.",
+    "audioSlowUrl": "/audio/patterns/reduction-asker-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-asker-fast.mp3",
+    "tips": [
+      "Sounds like someone who asks questions",
+      "The 'h' in 'her' is silent",
+      "Same pattern as teller"
+    ],
+    "difficulty": 2,
+    "orderIndex": 47
+  },
+  {
+    "id": "reduction-cmon",
+    "category": "reductions",
+    "level": 2,
+    "title": "Come on → C'mon",
+    "description": "The phrase 'come on' reduces to 'c'mon'. Very common for encouragement or impatience.",
+    "phoneticClear": "/kʌm ɑːn/",
+    "phoneticReduced": "/kmɑːn/",
+    "exampleSentence": "Come on, let's go!",
+    "exampleTranscription": "C'mon, let's go!",
+    "audioSlowUrl": "/audio/patterns/reduction-cmon-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-cmon-fast.mp3",
+    "tips": [
+      "The vowel in 'come' nearly disappears",
+      "Used for encouragement or urgency",
+      "Can express disbelief: 'Oh, c'mon!'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 48
+  },
+  {
+    "id": "reduction-yknow",
+    "category": "reductions",
+    "level": 2,
+    "title": "You know → Y'know",
+    "description": "The phrase 'you know' reduces to 'y'know'. Often used as a filler or to check understanding.",
+    "phoneticClear": "/juː noʊ/",
+    "phoneticReduced": "/jənoʊ/",
+    "exampleSentence": "It's like, you know, difficult.",
+    "exampleTranscription": "It's like, y'know, difficult.",
+    "audioSlowUrl": "/audio/patterns/reduction-yknow-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-yknow-fast.mp3",
+    "tips": [
+      "The 'ou' in 'you' becomes a schwa",
+      "Very common as a filler word",
+      "Can be overused in casual speech"
+    ],
+    "difficulty": 2,
+    "orderIndex": 49
+  },
+  {
+    "id": "reduction-imma",
+    "category": "reductions",
+    "level": 2,
+    "title": "I'm going to → Imma",
+    "description": "The phrase 'I'm going to' reduces to 'Imma' or 'I'mma'. Very casual and common.",
+    "phoneticClear": "/aɪm ɡoʊɪŋ tuː/",
+    "phoneticReduced": "/aɪmə/",
+    "exampleSentence": "I'm going to do it.",
+    "exampleTranscription": "Imma do it.",
+    "audioSlowUrl": "/audio/patterns/reduction-imma-slow.mp3",
+    "audioFastUrl": "/audio/patterns/reduction-imma-fast.mp3",
+    "tips": [
+      "Extremely reduced form of 'I'm going to'",
+      "Very casual, common in young speakers",
+      "Can also be 'I'mma' or 'Ima'"
+    ],
+    "difficulty": 2,
+    "orderIndex": 50
   }
 ]
