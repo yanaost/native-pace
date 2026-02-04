@@ -20,7 +20,6 @@ import {
   createReviewSummary,
   getReviewPageTitle,
   getReviewPageSubtitle,
-  getFirstPatternId,
   getEmptyStateMessage,
 } from '@/lib/utils/review-page-helpers';
 
@@ -60,11 +59,8 @@ export default function ReviewPage() {
   }, [loadDuePatterns]);
 
   const handleStartReview = useCallback(() => {
-    const firstPatternId = getFirstPatternId(duePatterns);
-    if (firstPatternId) {
-      router.push(`/practice?pattern=${firstPatternId}&mode=review`);
-    }
-  }, [duePatterns, router]);
+    router.push('/review/session');
+  }, [router]);
 
   const handleContinueLearning = useCallback(() => {
     router.push('/learn');
