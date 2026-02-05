@@ -175,8 +175,8 @@ export type Database = {
           phonetic_reduced: string | null;
           example_sentence: string | null;
           example_transcription: string | null;
-          audio_slow_url: string | null;
-          audio_fast_url: string | null;
+          audio_clear_url: string | null;
+          audio_conversational_url: string | null;
           tips: string[];
           difficulty: number;
           order_index: number;
@@ -191,8 +191,8 @@ export type Database = {
           phonetic_reduced?: string | null;
           example_sentence?: string | null;
           example_transcription?: string | null;
-          audio_slow_url?: string | null;
-          audio_fast_url?: string | null;
+          audio_clear_url?: string | null;
+          audio_conversational_url?: string | null;
           tips?: string[];
           difficulty?: number;
           order_index: number;
@@ -207,8 +207,8 @@ export type Database = {
           phonetic_reduced?: string | null;
           example_sentence?: string | null;
           example_transcription?: string | null;
-          audio_slow_url?: string | null;
-          audio_fast_url?: string | null;
+          audio_clear_url?: string | null;
+          audio_conversational_url?: string | null;
           tips?: string[];
           difficulty?: number;
           order_index?: number;

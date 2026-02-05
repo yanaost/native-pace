@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import { getPricingTiers, formatPriceDisplay, type PricingTier } from '@/lib/utils/pricing-helpers';
+import { getPricingTiers, type PricingTier } from '@/lib/utils/pricing-helpers';
 
 /**
  * Pricing section for landing page showing free and premium tiers
@@ -22,7 +22,7 @@ export default function PricingSection() {
           Simple pricing
         </Typography>
         <Typography variant="body1" color="text.secondary" textAlign="center" sx={{ mb: 4 }}>
-          Start free, upgrade when you're ready
+          Start free, upgrade when you&apos;re ready
         </Typography>
 
         <Box

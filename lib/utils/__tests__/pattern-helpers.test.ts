@@ -52,8 +52,8 @@ describe('getPatternDisplayData', () => {
     phoneticReduced: 'wɑːnə',
     exampleSentence: 'I want to go.',
     exampleTranscription: 'I wanna go.',
-    audioSlowUrl: '/audio/patterns/reduction-wanna-slow.mp3',
-    audioFastUrl: '/audio/patterns/reduction-wanna-fast.mp3',
+    audioClearUrl: '/audio/patterns/reduction-wanna-clear.mp3',
+    audioConversationalUrl: '/audio/patterns/reduction-wanna-conversational.mp3',
     tips: ['Tip 1', 'Tip 2'],
     difficulty: 1,
     orderIndex: 1,
@@ -105,8 +105,8 @@ describe('getPatternDisplayData', () => {
   it('should include audio URLs', () => {
     const displayData = getPatternDisplayData(mockPattern);
 
-    expect(displayData.audioSlowUrl).toBe('/audio/patterns/reduction-wanna-slow.mp3');
-    expect(displayData.audioFastUrl).toBe('/audio/patterns/reduction-wanna-fast.mp3');
+    expect(displayData.audioClearUrl).toBe('/audio/patterns/reduction-wanna-clear.mp3');
+    expect(displayData.audioConversationalUrl).toBe('/audio/patterns/reduction-wanna-conversational.mp3');
   });
 
   it('should handle empty tips array', () => {
@@ -132,8 +132,8 @@ describe('PatternDisplayData interface', () => {
       exampleSentence: 'Test sentence.',
       exampleTranscription: 'Test transcription.',
       tips: ['Tip 1'],
-      audioSlowUrl: '/audio/slow.mp3',
-      audioFastUrl: '/audio/fast.mp3',
+      audioClearUrl: '/audio/slow.mp3',
+      audioConversationalUrl: '/audio/fast.mp3',
     };
 
     expect(Object.keys(displayData)).toHaveLength(10);
@@ -156,8 +156,8 @@ describe('Pattern data validation', () => {
         phoneticReduced: '/t/',
         exampleSentence: 'Test.',
         exampleTranscription: 'Test.',
-        audioSlowUrl: '/audio/slow.mp3',
-        audioFastUrl: '/audio/fast.mp3',
+        audioClearUrl: '/audio/slow.mp3',
+        audioConversationalUrl: '/audio/fast.mp3',
         tips: [],
         difficulty,
         orderIndex: 1,
@@ -189,8 +189,8 @@ describe('Pattern data validation', () => {
         phoneticReduced: '/t/',
         exampleSentence: 'Test.',
         exampleTranscription: 'Test.',
-        audioSlowUrl: '/audio/slow.mp3',
-        audioFastUrl: '/audio/fast.mp3',
+        audioClearUrl: '/audio/slow.mp3',
+        audioConversationalUrl: '/audio/fast.mp3',
         tips: [],
         difficulty: 1,
         orderIndex: 1,

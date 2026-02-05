@@ -8,7 +8,6 @@ import {
   type PatternRecord,
   type SessionRecord,
 } from '../stats-helpers';
-import type { PatternCategory } from '@/types/pattern';
 
 describe('calculatePatternsLearned', () => {
   it('should return 0 for empty array', () => {

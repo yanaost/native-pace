@@ -43,12 +43,12 @@ export default function AudioComparison({
     createInitialResult(pattern.id)
   );
 
-  const handlePlaySlow = useCallback(() => {
-    setResult((prev) => ({ ...prev, listenedSlow: true }));
+  const handlePlayClear = useCallback(() => {
+    setResult((prev) => ({ ...prev, listenedClear: true }));
   }, []);
 
-  const handlePlayFast = useCallback(() => {
-    setResult((prev) => ({ ...prev, listenedFast: true }));
+  const handlePlayConversational = useCallback(() => {
+    setResult((prev) => ({ ...prev, listenedConversational: true }));
   }, []);
 
   const handleReplay = useCallback(() => {
@@ -110,11 +110,11 @@ export default function AudioComparison({
 
         {/* Audio Player */}
         <AudioPlayer
-          slowUrl={pattern.audioSlowUrl}
-          fastUrl={pattern.audioFastUrl}
+          clearUrl={pattern.audioClearUrl}
+          conversationalUrl={pattern.audioConversationalUrl}
           audioId={`comparison-${pattern.id}`}
-          onPlaySlow={handlePlaySlow}
-          onPlayFast={handlePlayFast}
+          onPlayClear={handlePlayClear}
+          onPlayConversational={handlePlayConversational}
           enableGlobalShortcuts={enableAudioShortcuts}
         />
 
@@ -124,7 +124,7 @@ export default function AudioComparison({
             color="text.secondary"
             sx={{ display: 'block', textAlign: 'center', mt: 1 }}
           >
-            Keyboard: S = Slow, F = Fast, Space = Replay
+            Keyboard: C = Clear, N = Natural, Space = Replay
           </Typography>
         )}
       </Card>
@@ -156,7 +156,7 @@ export default function AudioComparison({
           color="text.secondary"
           sx={{ display: 'block', textAlign: 'center', mt: 1 }}
         >
-          Listen to both slow and fast versions to continue
+          Listen to both clear and conversational versions to continue
         </Typography>
       )}
     </Box>

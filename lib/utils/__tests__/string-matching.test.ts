@@ -346,7 +346,7 @@ describe('combinedSimilarity', () => {
   it('should weight character similarity 70%', () => {
     // For strings with same tokens but different order
     // Character sim might be lower but token sim could be higher
-    const charOnly = calculateSimilarity('hello world', 'world hello');
+    const _charOnly = calculateSimilarity('hello world', 'world hello');
     const combined = combinedSimilarity('hello world', 'world hello');
     // Combined should factor in token similarity
     expect(combined).toBeGreaterThanOrEqual(0);

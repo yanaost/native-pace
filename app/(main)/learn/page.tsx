@@ -17,7 +17,7 @@ import Progress from '@/components/ui/Progress';
 import type { SubscriptionTier } from '@/types/user';
 
 /** Props for the LevelCard component */
-export interface LevelCardProps {
+interface LevelCardProps {
   level: Level;
   isLocked: boolean;
   isPremium: boolean;
@@ -30,7 +30,7 @@ export interface LevelCardProps {
 /**
  * Card component for displaying a level
  */
-export function LevelCard({
+function LevelCard({
   level,
   isLocked,
   isPremium,

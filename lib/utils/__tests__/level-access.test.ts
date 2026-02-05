@@ -6,7 +6,7 @@ import {
   calculateCompletionPercentage,
   PatternWithProgress,
 } from '../level-access';
-import { LEVELS, Level } from '@/lib/constants/levels';
+import { LEVELS } from '@/lib/constants/levels';
 import type { SubscriptionTier } from '@/types/user';
 
 describe('canAccessLevel', () => {

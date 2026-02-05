@@ -25,6 +25,7 @@ export interface ProgressChartProps {
 const CHART_HEIGHT = 120;
 const LABEL_HEIGHT = 24;
 const PADDING = 16;
+const TOP_PADDING = 20; // Space for value labels above bars
 
 /**
  * Displays a weekly practice bar chart using SVG.
@@ -67,11 +68,11 @@ export default function ProgressChart({
       >
         <svg
           width={chartWidth + PADDING * 2}
-          height={CHART_HEIGHT + LABEL_HEIGHT}
+          height={CHART_HEIGHT + LABEL_HEIGHT + TOP_PADDING}
           role="img"
           aria-label={`Weekly practice chart: ${summary}`}
         >
-          <g transform={`translate(${PADDING}, 0)`}>
+          <g transform={`translate(${PADDING}, ${TOP_PADDING})`}>
             {data.map((point, index) => {
               const barHeight = calculateBarHeight(
                 point.value,

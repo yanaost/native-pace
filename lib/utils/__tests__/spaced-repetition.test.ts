@@ -1,4 +1,4 @@
-import { calculateSM2, exerciseResultToQuality, SM2Result } from '../spaced-repetition';
+import { calculateSM2, exerciseResultToQuality } from '../spaced-repetition';
 
 describe('calculateSM2', () => {
   describe('ease factor calculations', () => {

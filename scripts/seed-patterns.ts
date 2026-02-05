@@ -28,8 +28,8 @@ export interface PatternRow {
   phonetic_reduced: string;
   example_sentence: string;
   example_transcription: string;
-  audio_slow_url: string;
-  audio_fast_url: string;
+  audio_clear_url: string;
+  audio_conversational_url: string;
   tips: string[];
   difficulty: number;
   order_index: number;
@@ -49,8 +49,8 @@ export function transformPatternToRow(pattern: Pattern): PatternRow {
     phonetic_reduced: pattern.phoneticReduced,
     example_sentence: pattern.exampleSentence,
     example_transcription: pattern.exampleTranscription,
-    audio_slow_url: pattern.audioSlowUrl,
-    audio_fast_url: pattern.audioFastUrl,
+    audio_clear_url: pattern.audioClearUrl,
+    audio_conversational_url: pattern.audioConversationalUrl,
     tips: pattern.tips,
     difficulty: pattern.difficulty,
     order_index: pattern.orderIndex,

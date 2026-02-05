@@ -23,8 +23,8 @@ describe('seed-patterns', () => {
       phoneticReduced: '/wɑːnə/',
       exampleSentence: 'I want to go.',
       exampleTranscription: 'I wanna go.',
-      audioSlowUrl: '/audio/patterns/reduction-wanna-slow.mp3',
-      audioFastUrl: '/audio/patterns/reduction-wanna-fast.mp3',
+      audioClearUrl: '/audio/patterns/reduction-wanna-clear.mp3',
+      audioConversationalUrl: '/audio/patterns/reduction-wanna-conversational.mp3',
       tips: ['Tip 1', 'Tip 2'],
       difficulty: 1,
       orderIndex: 1,
@@ -37,8 +37,8 @@ describe('seed-patterns', () => {
       expect(row.phonetic_reduced).toBe(samplePattern.phoneticReduced);
       expect(row.example_sentence).toBe(samplePattern.exampleSentence);
       expect(row.example_transcription).toBe(samplePattern.exampleTranscription);
-      expect(row.audio_slow_url).toBe(samplePattern.audioSlowUrl);
-      expect(row.audio_fast_url).toBe(samplePattern.audioFastUrl);
+      expect(row.audio_clear_url).toBe(samplePattern.audioClearUrl);
+      expect(row.audio_conversational_url).toBe(samplePattern.audioConversationalUrl);
       expect(row.order_index).toBe(samplePattern.orderIndex);
     });
 
@@ -67,8 +67,8 @@ describe('seed-patterns', () => {
         'phonetic_reduced',
         'example_sentence',
         'example_transcription',
-        'audio_slow_url',
-        'audio_fast_url',
+        'audio_clear_url',
+        'audio_conversational_url',
         'tips',
         'difficulty',
         'order_index',
@@ -124,8 +124,8 @@ describe('seed-patterns', () => {
           phoneticReduced: '/b/',
           exampleSentence: 'Ex',
           exampleTranscription: 'Ex trans',
-          audioSlowUrl: '/audio/slow.mp3',
-          audioFastUrl: '/audio/fast.mp3',
+          audioClearUrl: '/audio/slow.mp3',
+          audioConversationalUrl: '/audio/fast.mp3',
           tips: ['Tip'],
           difficulty: 1,
           orderIndex: 1,
@@ -143,8 +143,8 @@ describe('seed-patterns', () => {
           phoneticReduced: '/d/',
           exampleSentence: 'Ex 2',
           exampleTranscription: 'Ex trans 2',
-          audioSlowUrl: '/audio/slow2.mp3',
-          audioFastUrl: '/audio/fast2.mp3',
+          audioClearUrl: '/audio/slow2.mp3',
+          audioConversationalUrl: '/audio/fast2.mp3',
           tips: ['Tip 2'],
           difficulty: 1,
           orderIndex: 9,
@@ -190,8 +190,8 @@ describe('seed-patterns', () => {
             phoneticReduced: '/b/',
             exampleSentence: 'Ex',
             exampleTranscription: 'Ex trans',
-            audioSlowUrl: '/audio/slow.mp3',
-            audioFastUrl: '/audio/fast.mp3',
+            audioClearUrl: '/audio/slow.mp3',
+            audioConversationalUrl: '/audio/fast.mp3',
             tips: ['Tip'],
             difficulty: 1,
             orderIndex: 1,

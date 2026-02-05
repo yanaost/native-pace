@@ -70,8 +70,8 @@ export const LEVEL_2_PATTERN_IDS = [
   'reduction-imma',
 ] as const;
 
-/** Audio speed variants */
-export const AUDIO_VARIANTS = ['slow', 'fast'] as const;
+/** Audio variants: clear (dictionary) and conversational (natural speech) */
+export const AUDIO_VARIANTS = ['clear', 'conversational'] as const;
 
 /** Audio variant type */
 export type AudioVariant = (typeof AUDIO_VARIANTS)[number];

@@ -102,18 +102,18 @@ describe('reductions.json', () => {
   });
 
   describe('audio URLs', () => {
-    it('should have valid audioSlowUrl format for all patterns', () => {
+    it('should have valid audioClearUrl format for all patterns', () => {
       patterns.forEach((pattern) => {
-        expect(pattern.audioSlowUrl).toMatch(
-          /^\/audio\/patterns\/reduction-[a-z]+-slow\.mp3$/
+        expect(pattern.audioClearUrl).toMatch(
+          /^\/audio\/patterns\/reduction-[a-z]+-clear\.mp3$/
         );
       });
     });
 
-    it('should have valid audioFastUrl format for all patterns', () => {
+    it('should have valid audioConversationalUrl format for all patterns', () => {
       patterns.forEach((pattern) => {
-        expect(pattern.audioFastUrl).toMatch(
-          /^\/audio\/patterns\/reduction-[a-z]+-fast\.mp3$/
+        expect(pattern.audioConversationalUrl).toMatch(
+          /^\/audio\/patterns\/reduction-[a-z]+-conversational\.mp3$/
         );
       });
     });

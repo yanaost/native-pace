@@ -1,6 +1,6 @@
 import {
   AUDIO_OUTPUT_DIR,
-  AUDIO_SPEEDS,
+  AUDIO_VARIANTS,
   DEFAULT_VOICE,
   AVAILABLE_VOICES,
   getAudioFilename,
@@ -17,18 +17,18 @@ describe('AUDIO_OUTPUT_DIR', () => {
   });
 });
 
-describe('AUDIO_SPEEDS', () => {
-  it('should have slow speed config', () => {
-    expect(AUDIO_SPEEDS.slow).toEqual({
+describe('AUDIO_VARIANTS', () => {
+  it('should have clear variant config', () => {
+    expect(AUDIO_VARIANTS.clear).toEqual({
       rate: '-30%',
-      suffix: 'slow',
+      suffix: 'clear',
     });
   });
 
-  it('should have fast speed config', () => {
-    expect(AUDIO_SPEEDS.fast).toEqual({
+  it('should have conversational variant config', () => {
+    expect(AUDIO_VARIANTS.conversational).toEqual({
       rate: '+0%',
-      suffix: 'fast',
+      suffix: 'conversational',
     });
   });
 });
@@ -50,34 +50,36 @@ describe('AVAILABLE_VOICES', () => {
 });
 
 describe('getAudioFilename', () => {
-  it('should generate slow filename', () => {
-    expect(getAudioFilename('reduction-wanna', 'slow')).toBe('reduction-wanna-slow.mp3');
+  it('should generate clear filename', () => {
+    expect(getAudioFilename('reduction-wanna', 'clear')).toBe('reduction-wanna-clear.mp3');
   });
 
-  it('should generate fast filename', () => {
-    expect(getAudioFilename('reduction-wanna', 'fast')).toBe('reduction-wanna-fast.mp3');
+  it('should generate conversational filename', () => {
+    expect(getAudioFilename('reduction-wanna', 'conversational')).toBe(
+      'reduction-wanna-conversational.mp3'
+    );
   });
 
   it('should handle pattern IDs with hyphens', () => {
-    expect(getAudioFilename('weak-form-to', 'slow')).toBe('weak-form-to-slow.mp3');
+    expect(getAudioFilename('weak-form-to', 'clear')).toBe('weak-form-to-clear.mp3');
   });
 });
 
 describe('getAudioOutputPath', () => {
-  it('should generate correct slow path', () => {
-    const path = getAudioOutputPath('reduction-wanna', 'slow');
-    expect(path).toContain('reduction-wanna-slow.mp3');
+  it('should generate correct clear path', () => {
+    const path = getAudioOutputPath('reduction-wanna', 'clear');
+    expect(path).toContain('reduction-wanna-clear.mp3');
     expect(path).toContain('public/audio/patterns');
   });
 
-  it('should generate correct fast path', () => {
-    const path = getAudioOutputPath('reduction-gonna', 'fast');
-    expect(path).toContain('reduction-gonna-fast.mp3');
+  it('should generate correct conversational path', () => {
+    const path = getAudioOutputPath('reduction-gonna', 'conversational');
+    expect(path).toContain('reduction-gonna-conversational.mp3');
   });
 
   it('should use custom base directory when provided', () => {
-    const path = getAudioOutputPath('test-pattern', 'slow', '/custom/dir');
-    expect(path).toBe('/custom/dir/test-pattern-slow.mp3');
+    const path = getAudioOutputPath('test-pattern', 'clear', '/custom/dir');
+    expect(path).toBe('/custom/dir/test-pattern-clear.mp3');
   });
 });
 
@@ -162,8 +164,8 @@ describe('parsePatternForAudio', () => {
     expect(result).not.toBeNull();
     expect(result?.id).toBe('reduction-wanna');
     expect(result?.text).toBe('I want to go home.');
-    expect(result?.slowPath).toContain('reduction-wanna-slow.mp3');
-    expect(result?.fastPath).toContain('reduction-wanna-fast.mp3');
+    expect(result?.clearPath).toContain('reduction-wanna-clear.mp3');
+    expect(result?.conversationalPath).toContain('reduction-wanna-conversational.mp3');
   });
 
   it('should return null for invalid pattern', () => {

@@ -10,7 +10,6 @@ import {
   MASTERY_COLORS,
   MASTERY_THRESHOLDS,
   CATEGORY_ORDER,
-  type MasteryLevel,
   type PatternGridItem,
 } from '../pattern-grid-helpers';
 import type { PatternCategory } from '@/types/pattern';

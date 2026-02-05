@@ -84,8 +84,8 @@ export default function PatternView({
 
         {/* Audio Player */}
         <AudioPlayer
-          slowUrl={pattern.audioSlowUrl}
-          fastUrl={pattern.audioFastUrl}
+          clearUrl={pattern.audioClearUrl}
+          conversationalUrl={pattern.audioConversationalUrl}
           audioId={`pattern-${pattern.id}`}
           enableGlobalShortcuts={enableAudioShortcuts}
         />
@@ -96,7 +96,7 @@ export default function PatternView({
             color="text.secondary"
             sx={{ display: 'block', textAlign: 'center', mt: 1 }}
           >
-            Keyboard: S = Slow, F = Fast, Space = Replay
+            Keyboard: C = Clear, N = Natural, Space = Replay
           </Typography>
         )}
       </Card>

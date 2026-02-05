@@ -10,30 +10,30 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useAudioStore } from '@/lib/stores/audioStore';
 
 type PlaybackState = 'idle' | 'loading' | 'playing';
-type AudioType = 'slow' | 'fast';
+type AudioType = 'clear' | 'conversational';
 
 export interface AudioPlayerProps {
-  slowUrl: string;
-  fastUrl: string;
+  clearUrl: string;
+  conversationalUrl: string;
   audioId?: string;
-  onPlaySlow?: () => void;
-  onPlayFast?: () => void;
+  onPlayClear?: () => void;
+  onPlayConversational?: () => void;
   enableGlobalShortcuts?: boolean;
 }
 
 export default function AudioPlayer({
-  slowUrl,
-  fastUrl,
+  clearUrl,
+  conversationalUrl,
   audioId: providedAudioId,
-  onPlaySlow,
-  onPlayFast,
+  onPlayClear,
+  onPlayConversational,
   enableGlobalShortcuts = false,
 }: AudioPlayerProps) {
   const generatedId = useId();
   const audioId = providedAudioId || generatedId;
 
-  const slowAudioRef = useRef<HTMLAudioElement | null>(null);
-  const fastAudioRef = useRef<HTMLAudioElement | null>(null);
+  const clearAudioRef = useRef<HTMLAudioElement | null>(null);
+  const conversationalAudioRef = useRef<HTMLAudioElement | null>(null);
   const [playbackState, setPlaybackState] = useState<PlaybackState>('idle');
   const [activeType, setActiveType] = useState<AudioType | null>(null);
   const lastPlayedRef = useRef<AudioType | null>(null);
@@ -42,22 +42,22 @@ export default function AudioPlayer({
 
   // Preload audio on mount
   useEffect(() => {
-    slowAudioRef.current = new Audio(slowUrl);
-    fastAudioRef.current = new Audio(fastUrl);
-    slowAudioRef.current.preload = 'auto';
-    fastAudioRef.current.preload = 'auto';
+    clearAudioRef.current = new Audio(clearUrl);
+    conversationalAudioRef.current = new Audio(conversationalUrl);
+    clearAudioRef.current.preload = 'auto';
+    conversationalAudioRef.current.preload = 'auto';
 
     return () => {
-      slowAudioRef.current?.pause();
-      fastAudioRef.current?.pause();
+      clearAudioRef.current?.pause();
+      conversationalAudioRef.current?.pause();
     };
-  }, [slowUrl, fastUrl]);
+  }, [clearUrl, conversationalUrl]);
 
   const stopAll = useCallback(() => {
-    slowAudioRef.current?.pause();
-    fastAudioRef.current?.pause();
-    if (slowAudioRef.current) slowAudioRef.current.currentTime = 0;
-    if (fastAudioRef.current) fastAudioRef.current.currentTime = 0;
+    clearAudioRef.current?.pause();
+    conversationalAudioRef.current?.pause();
+    if (clearAudioRef.current) clearAudioRef.current.currentTime = 0;
+    if (conversationalAudioRef.current) conversationalAudioRef.current.currentTime = 0;
     setPlaybackState('idle');
     setActiveType(null);
   }, []);
@@ -71,7 +71,7 @@ export default function AudioPlayer({
 
   const play = useCallback((type: AudioType) => {
     stopAll();
-    const audio = type === 'slow' ? slowAudioRef.current : fastAudioRef.current;
+    const audio = type === 'clear' ? clearAudioRef.current : conversationalAudioRef.current;
     if (!audio) return;
 
     setActiveType(type);
@@ -84,23 +84,48 @@ export default function AudioPlayer({
       storeStop();
     };
 
-    audio.removeEventListener('ended', onEnded);
-    audio.addEventListener('ended', onEnded);
+    const onError = () => {
+      console.error('Audio failed to load:', audio.src);
+      setPlaybackState('idle');
+      setActiveType(null);
+      storeStop();
+    };
 
-    if (audio.readyState >= 3) {
-      audio.play();
-      setPlaybackState('playing');
+    audio.removeEventListener('ended', onEnded);
+    audio.removeEventListener('error', onError);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('error', onError);
+
+    // readyState >= 2 means we have enough data to play
+    if (audio.readyState >= 2) {
+      audio.play().then(() => {
+        setPlaybackState('playing');
+      }).catch((err) => {
+        console.error('Play failed:', err);
+        setPlaybackState('idle');
+        setActiveType(null);
+      });
     } else {
       setPlaybackState('loading');
-      audio.addEventListener('canplaythrough', () => {
-        audio.play();
-        setPlaybackState('playing');
-      }, { once: true });
+
+      const onCanPlay = () => {
+        audio.removeEventListener('canplay', onCanPlay);
+        audio.play().then(() => {
+          setPlaybackState('playing');
+        }).catch((err) => {
+          console.error('Play failed:', err);
+          setPlaybackState('idle');
+          setActiveType(null);
+        });
+      };
+
+      audio.addEventListener('canplay', onCanPlay);
+      audio.load(); // Force load if not already loading
     }
 
-    if (type === 'slow') onPlaySlow?.();
-    else onPlayFast?.();
-  }, [stopAll, onPlaySlow, onPlayFast, audioId, storePlay, storeStop]);
+    if (type === 'clear') onPlayClear?.();
+    else onPlayConversational?.();
+  }, [stopAll, onPlayClear, onPlayConversational, audioId, storePlay, storeStop]);
 
   const replay = useCallback(() => {
     if (lastPlayedRef.current) {
@@ -115,12 +140,12 @@ export default function AudioPlayer({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
 
-      if (e.key.toLowerCase() === 's') {
+      if (e.key.toLowerCase() === 'c') {
         e.preventDefault();
-        play('slow');
-      } else if (e.key.toLowerCase() === 'f') {
+        play('clear');
+      } else if (e.key.toLowerCase() === 'n') {
         e.preventDefault();
-        play('fast');
+        play('conversational');
       } else if (e.key === ' ') {
         e.preventDefault();
         replay();
@@ -138,48 +163,48 @@ export default function AudioPlayer({
     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', justifyContent: 'center' }}>
       <Box sx={{ textAlign: 'center' }}>
         <IconButton
-          onClick={() => play('slow')}
+          onClick={() => play('clear')}
           disabled={isLoading}
           sx={{
             bgcolor: 'primary.light',
             '&:hover': { bgcolor: 'primary.main', color: 'white' },
-            animation: isPlaying && activeType === 'slow' ? 'pulse 1s infinite' : 'none',
+            animation: isPlaying && activeType === 'clear' ? 'pulse 1s infinite' : 'none',
             '@keyframes pulse': {
               '0%, 100%': { transform: 'scale(1)' },
               '50%': { transform: 'scale(1.1)' },
             },
           }}
         >
-          {isLoading && activeType === 'slow' ? (
+          {isLoading && activeType === 'clear' ? (
             <CircularProgress size={24} />
           ) : (
             <SlowMotionVideoIcon />
           )}
         </IconButton>
-        <Typography variant="caption" display="block">Slow</Typography>
+        <Typography variant="caption" display="block">Clear</Typography>
       </Box>
 
       <Box sx={{ textAlign: 'center' }}>
         <IconButton
-          onClick={() => play('fast')}
+          onClick={() => play('conversational')}
           disabled={isLoading}
           sx={{
             bgcolor: 'primary.light',
             '&:hover': { bgcolor: 'primary.main', color: 'white' },
-            animation: isPlaying && activeType === 'fast' ? 'pulse 1s infinite' : 'none',
+            animation: isPlaying && activeType === 'conversational' ? 'pulse 1s infinite' : 'none',
             '@keyframes pulse': {
               '0%, 100%': { transform: 'scale(1)' },
               '50%': { transform: 'scale(1.1)' },
             },
           }}
         >
-          {isLoading && activeType === 'fast' ? (
+          {isLoading && activeType === 'conversational' ? (
             <CircularProgress size={24} />
           ) : (
             <SpeedIcon />
           )}
         </IconButton>
-        <Typography variant="caption" display="block">Fast</Typography>
+        <Typography variant="caption" display="block">Conversational</Typography>
       </Box>
     </Box>
   );

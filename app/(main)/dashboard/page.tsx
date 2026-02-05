@@ -150,7 +150,7 @@ export default function DashboardPage() {
       {/* Stats Row */}
       <Grid container spacing={2} sx={{ mb: 4 }}>
         {/* Streak Card */}
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <StreakCard
             currentStreak={profile?.streak_current ?? 0}
             longestStreak={profile?.streak_longest ?? 0}
@@ -158,7 +158,7 @@ export default function DashboardPage() {
         </Grid>
 
         {/* Progress Card */}
-        <Grid item xs={12} sm={6}>
+        <Grid size={{ xs: 12, sm: 6 }}>
           <Card>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Box
@@ -203,7 +203,7 @@ export default function DashboardPage() {
             )}
             {isAllComplete && (
               <Typography variant="body2" color="text.secondary">
-                Congratulations! You've completed all patterns.
+                Congratulations! You&apos;ve completed all patterns.
               </Typography>
             )}
           </Box>

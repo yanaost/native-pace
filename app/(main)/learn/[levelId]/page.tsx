@@ -16,7 +16,7 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { createClient } from '@/lib/supabase/client';
-import { LEVELS, getLevelById, LevelNumber } from '@/lib/constants/levels';
+import { getLevelById, LevelNumber } from '@/lib/constants/levels';
 import {
   canAccessLevel,
   findNextUnlearnedPattern,
@@ -37,7 +37,7 @@ export default function LevelDetailPage() {
   const levelId = parseInt(params.levelId as string, 10) as LevelNumber;
 
   const [patterns, setPatterns] = useState<PatternWithProgress[]>([]);
-  const [userTier, setUserTier] = useState<SubscriptionTier>('free');
+  const [_userTier, setUserTier] = useState<SubscriptionTier>('free');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -150,7 +150,7 @@ export default function LevelDetailPage() {
           <Typography variant="h5">Error</Typography>
         </Box>
         <Typography color="error">{error || 'Level not found'}</Typography>
-        <Button variant="outlined" onClick={handleBack} sx={{ mt: 2 }}>
+        <Button variant="outline" onClick={handleBack} sx={{ mt: 2 }}>
           Back to Levels
         </Button>
       </Container>

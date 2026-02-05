@@ -1,7 +1,8 @@
 /**
- * Audio Generation Script
+ * Audio Generation Script (edge-tts)
  *
- * Generates slow and fast audio versions for pattern files using edge-tts.
+ * Generates clear and conversational audio versions for pattern files using edge-tts.
+ * Note: For better quality, use generate-audio-elevenlabs.ts instead.
  *
  * Prerequisites:
  *   pip install edge-tts
@@ -19,11 +20,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {
   AUDIO_OUTPUT_DIR,
-  AUDIO_SPEEDS,
+  AUDIO_VARIANTS,
   DEFAULT_VOICE,
   getEdgeTTSArgs,
   getPatternsForAudioGeneration,
-  type AudioSpeedType,
+  type AudioVariantType,
   type ParsedAudioPattern,
 } from '../lib/utils/audio-generation-helpers';
 
@@ -123,11 +124,11 @@ async function generatePatternAudio(
   pattern: ParsedAudioPattern,
   dryRun: boolean
 ): Promise<void> {
-  const speeds: AudioSpeedType[] = ['slow', 'fast'];
+  const variants: AudioVariantType[] = ['clear', 'conversational'];
 
-  for (const speed of speeds) {
-    const outputPath = speed === 'slow' ? pattern.slowPath : pattern.fastPath;
-    const rate = AUDIO_SPEEDS[speed].rate;
+  for (const variant of variants) {
+    const outputPath = variant === 'clear' ? pattern.clearPath : pattern.conversationalPath;
+    const rate = AUDIO_VARIANTS[variant].rate;
     const fullPath = path.join(process.cwd(), outputPath);
 
     if (dryRun) {
@@ -143,9 +144,9 @@ async function generatePatternAudio(
 
       try {
         await generateAudio(pattern.text, fullPath, rate);
-        console.log(`  ✓ Generated: ${outputPath}`);
+        console.log(`  + Generated: ${outputPath}`);
       } catch (error) {
-        console.error(`  ✗ Failed: ${outputPath}`);
+        console.error(`  x Failed: ${outputPath}`);
         console.error(`    Error: ${error}`);
       }
     }
@@ -158,8 +159,8 @@ async function generatePatternAudio(
 async function main(): Promise<void> {
   const args = parseArgs();
 
-  console.log('Audio Generation Script');
-  console.log('=======================\n');
+  console.log('Audio Generation Script (edge-tts)');
+  console.log('==================================\n');
 
   if (args.dryRun) {
     console.log('DRY RUN MODE - No files will be created\n');

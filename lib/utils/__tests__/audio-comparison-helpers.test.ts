@@ -10,14 +10,14 @@ describe('createInitialResult', () => {
     expect(result.patternId).toBe('test-pattern-id');
   });
 
-  it('should initialize listenedSlow to false', () => {
+  it('should initialize listenedClear to false', () => {
     const result = createInitialResult('test-pattern-id');
-    expect(result.listenedSlow).toBe(false);
+    expect(result.listenedClear).toBe(false);
   });
 
-  it('should initialize listenedFast to false', () => {
+  it('should initialize listenedConversational to false', () => {
     const result = createInitialResult('test-pattern-id');
-    expect(result.listenedFast).toBe(false);
+    expect(result.listenedConversational).toBe(false);
   });
 
   it('should initialize replayCount to 0', () => {
@@ -35,8 +35,8 @@ describe('createInitialResult', () => {
 
     expect(result).toEqual({
       patternId: 'pattern-123',
-      listenedSlow: false,
-      listenedFast: false,
+      listenedClear: false,
+      listenedConversational: false,
       replayCount: 0,
       completed: false,
     });
@@ -47,8 +47,8 @@ describe('hasListenedToBoth', () => {
   it('should return false when neither audio has been listened to', () => {
     const result: AudioComparisonResult = {
       patternId: 'test',
-      listenedSlow: false,
-      listenedFast: false,
+      listenedClear: false,
+      listenedConversational: false,
       replayCount: 0,
       completed: false,
     };
@@ -56,11 +56,11 @@ describe('hasListenedToBoth', () => {
     expect(hasListenedToBoth(result)).toBe(false);
   });
 
-  it('should return false when only slow audio has been listened to', () => {
+  it('should return false when only clear audio has been listened to', () => {
     const result: AudioComparisonResult = {
       patternId: 'test',
-      listenedSlow: true,
-      listenedFast: false,
+      listenedClear: true,
+      listenedConversational: false,
       replayCount: 0,
       completed: false,
     };
@@ -68,11 +68,11 @@ describe('hasListenedToBoth', () => {
     expect(hasListenedToBoth(result)).toBe(false);
   });
 
-  it('should return false when only fast audio has been listened to', () => {
+  it('should return false when only conversational audio has been listened to', () => {
     const result: AudioComparisonResult = {
       patternId: 'test',
-      listenedSlow: false,
-      listenedFast: true,
+      listenedClear: false,
+      listenedConversational: true,
       replayCount: 0,
       completed: false,
     };
@@ -83,8 +83,8 @@ describe('hasListenedToBoth', () => {
   it('should return true when both audio versions have been listened to', () => {
     const result: AudioComparisonResult = {
       patternId: 'test',
-      listenedSlow: true,
-      listenedFast: true,
+      listenedClear: true,
+      listenedConversational: true,
       replayCount: 0,
       completed: false,
     };
@@ -95,8 +95,8 @@ describe('hasListenedToBoth', () => {
   it('should return true regardless of replay count', () => {
     const result: AudioComparisonResult = {
       patternId: 'test',
-      listenedSlow: true,
-      listenedFast: true,
+      listenedClear: true,
+      listenedConversational: true,
       replayCount: 5,
       completed: false,
     };
@@ -107,8 +107,8 @@ describe('hasListenedToBoth', () => {
   it('should return true regardless of completion status', () => {
     const result: AudioComparisonResult = {
       patternId: 'test',
-      listenedSlow: true,
-      listenedFast: true,
+      listenedClear: true,
+      listenedConversational: true,
       replayCount: 0,
       completed: true,
     };
@@ -121,16 +121,16 @@ describe('AudioComparisonResult interface', () => {
   it('should have correct shape', () => {
     const result: AudioComparisonResult = {
       patternId: 'reduction-wanna',
-      listenedSlow: true,
-      listenedFast: true,
+      listenedClear: true,
+      listenedConversational: true,
       replayCount: 3,
       completed: true,
     };
 
     expect(Object.keys(result)).toHaveLength(5);
     expect(result.patternId).toBe('reduction-wanna');
-    expect(result.listenedSlow).toBe(true);
-    expect(result.listenedFast).toBe(true);
+    expect(result.listenedClear).toBe(true);
+    expect(result.listenedConversational).toBe(true);
     expect(result.replayCount).toBe(3);
     expect(result.completed).toBe(true);
   });

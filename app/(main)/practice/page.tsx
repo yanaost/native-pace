@@ -83,17 +83,17 @@ function PracticePageContent() {
       const loadedPattern: Pattern = {
         id: patternData.id,
         category: patternData.category,
-        level: patternData.level,
+        level: patternData.level as 1 | 2 | 3 | 4 | 5 | 6,
         title: patternData.title,
         description: patternData.description,
-        phoneticClear: patternData.phonetic_clear,
-        phoneticReduced: patternData.phonetic_reduced,
-        exampleSentence: patternData.example_sentence,
-        exampleTranscription: patternData.example_transcription,
-        audioSlowUrl: patternData.audio_slow_url,
-        audioFastUrl: patternData.audio_fast_url,
+        phoneticClear: patternData.phonetic_clear || '',
+        phoneticReduced: patternData.phonetic_reduced || '',
+        exampleSentence: patternData.example_sentence || '',
+        exampleTranscription: patternData.example_transcription || '',
+        audioClearUrl: patternData.audio_clear_url || '',
+        audioConversationalUrl: patternData.audio_conversational_url || '',
         tips: patternData.tips || [],
-        difficulty: patternData.difficulty,
+        difficulty: (patternData.difficulty || 1) as 1 | 2 | 3 | 4 | 5,
         orderIndex: patternData.order_index,
       };
 
@@ -113,6 +113,36 @@ function PracticePageContent() {
     }
   }, [pattern, router]);
 
+  // Save progress to the database
+  const saveProgress = useCallback(async (
+    exerciseType: 'comparison' | 'discrimination' | 'dictation' | 'speed',
+    isCorrect: boolean,
+    responseTimeMs: number,
+    userInput?: string
+  ) => {
+    if (!patternId) return;
+
+    try {
+      const response = await fetch('/api/progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patternId,
+          exerciseType,
+          isCorrect,
+          responseTimeMs,
+          userInput,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Failed to save progress:', await response.text());
+      }
+    } catch (error) {
+      console.error('Error saving progress:', error);
+    }
+  }, [patternId]);
+
   const handlePatternViewNext = useCallback(() => {
     if (!sessionState) return;
     setSessionState(advanceStep(sessionState));
@@ -127,8 +157,9 @@ function PracticePageContent() {
         responseTimeMs: 0, // AudioComparison doesn't track time the same way
       };
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
+      saveProgress('comparison', result.completed, 0);
     },
-    [sessionState]
+    [sessionState, saveProgress]
   );
 
   const handleDiscriminationComplete = useCallback(
@@ -140,8 +171,9 @@ function PracticePageContent() {
         responseTimeMs: result.responseTimeMs,
       };
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
+      saveProgress('discrimination', result.isCorrect, result.responseTimeMs);
     },
-    [sessionState]
+    [sessionState, saveProgress]
   );
 
   const handleDictationComplete = useCallback(
@@ -153,21 +185,24 @@ function PracticePageContent() {
         responseTimeMs: result.responseTimeMs,
       };
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
+      saveProgress('dictation', result.isCorrect, result.responseTimeMs, result.userInput);
     },
-    [sessionState]
+    [sessionState, saveProgress]
   );
 
   const handleSpeedComplete = useCallback(
     (result: SpeedTrainingResult) => {
       if (!sessionState) return;
+      const isCorrect = result.comfortableSpeed >= 1.0; // Consider "correct" if comfortable at normal speed
       const exerciseResult: ExerciseSessionResult = {
         exerciseType: 'speed',
-        isCorrect: result.comfortableSpeed >= 1.0, // Consider "correct" if comfortable at normal speed
+        isCorrect,
         responseTimeMs: result.responseTimeMs,
       };
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
+      saveProgress('speed', isCorrect, result.responseTimeMs);
     },
-    [sessionState]
+    [sessionState, saveProgress]
   );
 
   const handleFinish = useCallback(() => {
@@ -250,7 +285,7 @@ function PracticePageContent() {
         <ListeningDiscrimination
           exerciseId={`${pattern.id}-discrimination`}
           patternId={pattern.id}
-          audioUrl={pattern.audioFastUrl}
+          audioUrl={pattern.audioConversationalUrl}
           correctAnswer={pattern.exampleTranscription}
           options={[
             pattern.exampleSentence,
@@ -267,7 +302,7 @@ function PracticePageContent() {
         <DictationChallenge
           exerciseId={`${pattern.id}-dictation`}
           patternId={pattern.id}
-          audioUrl={pattern.audioFastUrl}
+          audioUrl={pattern.audioConversationalUrl}
           correctAnswer={pattern.exampleTranscription}
           acceptableAnswers={[pattern.exampleSentence]}
           highlightPatternsText={[pattern.phoneticReduced]}
@@ -281,7 +316,7 @@ function PracticePageContent() {
         <SpeedTraining
           exerciseId={`${pattern.id}-speed`}
           patternId={pattern.id}
-          audioUrl={pattern.audioFastUrl}
+          audioUrl={pattern.audioConversationalUrl}
           prompt="Can you understand at this speed?"
           onComplete={handleSpeedComplete}
         />

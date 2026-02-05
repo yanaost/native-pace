@@ -9,6 +9,7 @@ import {
   isValidColor,
   hasMaskableIcon,
   type PWAManifest,
+  type PWAIcon,
 } from '../manifest-helpers';
 
 describe('REQUIRED_MANIFEST_FIELDS', () => {
@@ -93,7 +94,7 @@ describe('validateIcons', () => {
       { sizes: '192x192', type: 'image/png' },
       { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ];
-    const errors = validateIcons(icons as any);
+    const errors = validateIcons(icons as unknown as PWAIcon[]);
     expect(errors.some((e) => e.includes('src'))).toBe(true);
   });
 
@@ -102,7 +103,7 @@ describe('validateIcons', () => {
       { src: '/icon-192.png', type: 'image/png' },
       { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ];
-    const errors = validateIcons(icons as any);
+    const errors = validateIcons(icons as unknown as PWAIcon[]);
     expect(errors.some((e) => e.includes('sizes'))).toBe(true);
   });
 
@@ -111,7 +112,7 @@ describe('validateIcons', () => {
       { src: '/icon-192.png', sizes: '192x192' },
       { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ];
-    const errors = validateIcons(icons as any);
+    const errors = validateIcons(icons as unknown as PWAIcon[]);
     expect(errors.some((e) => e.includes('type'))).toBe(true);
   });
 });

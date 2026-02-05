@@ -17,7 +17,7 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import ListeningDiscrimination from '@/components/exercises/ListeningDiscrimination';
 import DictationChallenge from '@/components/exercises/DictationChallenge';
-import { getDuePatterns, ProgressWithPattern } from '@/lib/utils/review-queue';
+import { getDuePatterns } from '@/lib/utils/review-queue';
 import {
   createReviewSessionState,
   getCurrentPattern,
@@ -43,7 +43,7 @@ export default function ReviewSessionPage() {
   const router = useRouter();
   const [sessionState, setSessionState] = useState<ReviewSessionState | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, _setError] = useState<string | null>(null);
 
   // Load due patterns
   useEffect(() => {
@@ -209,17 +209,17 @@ export default function ReviewSessionPage() {
   const pattern: Pattern = {
     id: currentPattern.patterns?.id ?? currentPattern.pattern_id,
     category: currentPattern.patterns?.category ?? 'weak-forms',
-    level: currentPattern.patterns?.level ?? 1,
+    level: (currentPattern.patterns?.level ?? 1) as 1 | 2 | 3 | 4 | 5 | 6,
     title: currentPattern.patterns?.title ?? 'Pattern',
     description: currentPattern.patterns?.description ?? '',
     phoneticClear: currentPattern.patterns?.phonetic_clear ?? '',
     phoneticReduced: currentPattern.patterns?.phonetic_reduced ?? '',
     exampleSentence: currentPattern.patterns?.example_sentence ?? '',
     exampleTranscription: currentPattern.patterns?.example_transcription ?? '',
-    audioSlowUrl: currentPattern.patterns?.audio_slow_url ?? '',
-    audioFastUrl: currentPattern.patterns?.audio_fast_url ?? '',
+    audioClearUrl: currentPattern.patterns?.audio_clear_url ?? '',
+    audioConversationalUrl: currentPattern.patterns?.audio_conversational_url ?? '',
     tips: currentPattern.patterns?.tips ?? [],
-    difficulty: currentPattern.patterns?.difficulty ?? 1,
+    difficulty: (currentPattern.patterns?.difficulty ?? 1) as 1 | 2 | 3 | 4 | 5,
     orderIndex: currentPattern.patterns?.order_index ?? 1,
   };
 
@@ -260,7 +260,7 @@ export default function ReviewSessionPage() {
         <ListeningDiscrimination
           exerciseId={`${pattern.id}-review-discrimination`}
           patternId={pattern.id}
-          audioUrl={pattern.audioFastUrl}
+          audioUrl={pattern.audioConversationalUrl}
           correctAnswer={pattern.exampleTranscription}
           options={[
             pattern.exampleSentence,
@@ -277,7 +277,7 @@ export default function ReviewSessionPage() {
         <DictationChallenge
           exerciseId={`${pattern.id}-review-dictation`}
           patternId={pattern.id}
-          audioUrl={pattern.audioFastUrl}
+          audioUrl={pattern.audioConversationalUrl}
           correctAnswer={pattern.exampleTranscription}
           acceptableAnswers={[pattern.exampleSentence]}
           highlightPatternsText={[pattern.phoneticReduced]}

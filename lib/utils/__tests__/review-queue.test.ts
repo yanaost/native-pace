@@ -458,8 +458,8 @@ function createPattern(id: string, level: number, category = 'weak-forms') {
     phonetic_reduced: '/tst/',
     example_sentence: 'Example sentence',
     example_transcription: 'Example transcription',
-    audio_slow_url: '/audio/slow.mp3',
-    audio_fast_url: '/audio/fast.mp3',
+    audio_clear_url: '/audio/slow.mp3',
+    audio_conversational_url: '/audio/fast.mp3',
     tips: ['Tip 1'],
     difficulty: 1,
     order_index: parseInt(id) || 1,
@@ -495,7 +495,6 @@ function createMockSupabaseForNewPatterns(options: {
   patternsResult: { data: unknown; error: Error | null };
 }) {
   const { practicedResult, patternsResult } = options;
-  let callIndex = 0;
   const mock = {
     _limitCalled: 0,
     from: (table: string) => {

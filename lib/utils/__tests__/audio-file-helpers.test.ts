@@ -53,9 +53,9 @@ describe('LEVEL_1_PATTERN_IDS', () => {
 });
 
 describe('AUDIO_VARIANTS', () => {
-  it('should have slow and fast variants', () => {
-    expect(AUDIO_VARIANTS).toContain('slow');
-    expect(AUDIO_VARIANTS).toContain('fast');
+  it('should have clear and conversational variants', () => {
+    expect(AUDIO_VARIANTS).toContain('clear');
+    expect(AUDIO_VARIANTS).toContain('conversational');
   });
 
   it('should have exactly 2 variants', () => {
@@ -116,47 +116,47 @@ describe('verifyLevel2AudioFiles', () => {
 });
 
 describe('getAudioFilename', () => {
-  it('should generate slow filename', () => {
-    expect(getAudioFilename('reduction-wanna', 'slow')).toBe('reduction-wanna-slow.mp3');
+  it('should generate clear filename', () => {
+    expect(getAudioFilename('reduction-wanna', 'clear')).toBe('reduction-wanna-clear.mp3');
   });
 
-  it('should generate fast filename', () => {
-    expect(getAudioFilename('reduction-wanna', 'fast')).toBe('reduction-wanna-fast.mp3');
+  it('should generate conversational filename', () => {
+    expect(getAudioFilename('reduction-wanna', 'conversational')).toBe('reduction-wanna-conversational.mp3');
   });
 
   it('should handle weak-form patterns', () => {
-    expect(getAudioFilename('weak-form-to', 'slow')).toBe('weak-form-to-slow.mp3');
-    expect(getAudioFilename('weak-form-to', 'fast')).toBe('weak-form-to-fast.mp3');
+    expect(getAudioFilename('weak-form-to', 'clear')).toBe('weak-form-to-clear.mp3');
+    expect(getAudioFilename('weak-form-to', 'conversational')).toBe('weak-form-to-conversational.mp3');
   });
 });
 
 describe('getAudioFilePath', () => {
-  it('should generate correct path for slow variant', () => {
-    const path = getAudioFilePath('reduction-wanna', 'slow');
-    expect(path).toBe('public/audio/patterns/reduction-wanna-slow.mp3');
+  it('should generate correct path for clear variant', () => {
+    const path = getAudioFilePath('reduction-wanna', 'clear');
+    expect(path).toBe('public/audio/patterns/reduction-wanna-clear.mp3');
   });
 
-  it('should generate correct path for fast variant', () => {
-    const path = getAudioFilePath('weak-form-to', 'fast');
-    expect(path).toBe('public/audio/patterns/weak-form-to-fast.mp3');
+  it('should generate correct path for conversational variant', () => {
+    const path = getAudioFilePath('weak-form-to', 'conversational');
+    expect(path).toBe('public/audio/patterns/weak-form-to-conversational.mp3');
   });
 });
 
 describe('getExpectedAudioFiles', () => {
-  it('should return 2 files per pattern (slow and fast)', () => {
+  it('should return 2 files per pattern (clear and conversational)', () => {
     const files = getExpectedAudioFiles(['pattern-1']);
     expect(files).toHaveLength(2);
-    expect(files[0].variant).toBe('slow');
-    expect(files[1].variant).toBe('fast');
+    expect(files[0].variant).toBe('clear');
+    expect(files[1].variant).toBe('conversational');
   });
 
   it('should return correct structure for each file', () => {
     const files = getExpectedAudioFiles(['reduction-wanna']);
     expect(files[0]).toEqual({
       patternId: 'reduction-wanna',
-      variant: 'slow',
-      filename: 'reduction-wanna-slow.mp3',
-      path: 'public/audio/patterns/reduction-wanna-slow.mp3',
+      variant: 'clear',
+      filename: 'reduction-wanna-clear.mp3',
+      path: 'public/audio/patterns/reduction-wanna-clear.mp3',
       exists: false,
     });
   });
@@ -195,20 +195,20 @@ describe('verifyAudioFiles', () => {
 describe('getAudioVerificationSummary', () => {
   it('should return correct summary for all missing', () => {
     const files = [
-      { patternId: 'p1', variant: 'slow' as const, filename: 'p1-slow.mp3', path: '', exists: false },
-      { patternId: 'p1', variant: 'fast' as const, filename: 'p1-fast.mp3', path: '', exists: false },
+      { patternId: 'p1', variant: 'clear' as const, filename: 'p1-clear.mp3', path: '', exists: false },
+      { patternId: 'p1', variant: 'conversational' as const, filename: 'p1-conversational.mp3', path: '', exists: false },
     ];
     const summary = getAudioVerificationSummary(files);
     expect(summary.total).toBe(2);
     expect(summary.existing).toBe(0);
     expect(summary.missing).toBe(2);
-    expect(summary.missingFiles).toEqual(['p1-slow.mp3', 'p1-fast.mp3']);
+    expect(summary.missingFiles).toEqual(['p1-clear.mp3', 'p1-conversational.mp3']);
   });
 
   it('should return correct summary for all existing', () => {
     const files = [
-      { patternId: 'p1', variant: 'slow' as const, filename: 'p1-slow.mp3', path: '', exists: true },
-      { patternId: 'p1', variant: 'fast' as const, filename: 'p1-fast.mp3', path: '', exists: true },
+      { patternId: 'p1', variant: 'clear' as const, filename: 'p1-clear.mp3', path: '', exists: true },
+      { patternId: 'p1', variant: 'conversational' as const, filename: 'p1-conversational.mp3', path: '', exists: true },
     ];
     const summary = getAudioVerificationSummary(files);
     expect(summary.total).toBe(2);
@@ -219,13 +219,13 @@ describe('getAudioVerificationSummary', () => {
 
   it('should return correct summary for mixed', () => {
     const files = [
-      { patternId: 'p1', variant: 'slow' as const, filename: 'p1-slow.mp3', path: '', exists: true },
-      { patternId: 'p1', variant: 'fast' as const, filename: 'p1-fast.mp3', path: '', exists: false },
+      { patternId: 'p1', variant: 'clear' as const, filename: 'p1-clear.mp3', path: '', exists: true },
+      { patternId: 'p1', variant: 'conversational' as const, filename: 'p1-conversational.mp3', path: '', exists: false },
     ];
     const summary = getAudioVerificationSummary(files);
     expect(summary.total).toBe(2);
     expect(summary.existing).toBe(1);
     expect(summary.missing).toBe(1);
-    expect(summary.missingFiles).toEqual(['p1-fast.mp3']);
+    expect(summary.missingFiles).toEqual(['p1-conversational.mp3']);
   });
 });

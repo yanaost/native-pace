@@ -32,10 +32,10 @@ export interface Pattern {
   exampleSentence: string;
   /** How the example sounds when spoken naturally */
   exampleTranscription: string;
-  /** URL to slow/clear audio file */
-  audioSlowUrl: string;
-  /** URL to fast/natural audio file */
-  audioFastUrl: string;
+  /** URL to clear/dictionary pronunciation audio */
+  audioClearUrl: string;
+  /** URL to conversational/natural speech audio */
+  audioConversationalUrl: string;
   /** Learning tips for mastering this pattern */
   tips: string[];
   /** Difficulty rating (1-5) */

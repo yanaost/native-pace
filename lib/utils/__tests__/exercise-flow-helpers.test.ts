@@ -51,14 +51,14 @@ describe('validateSubmission', () => {
   });
 
   it('should require patternId', () => {
-    const { patternId, ...rest } = validSubmission;
+    const { patternId: _patternId, ...rest } = validSubmission;
     const result = validateSubmission(rest);
     expect(result.isValid).toBe(false);
     expect(result.errors.some((e) => e.includes('patternId'))).toBe(true);
   });
 
   it('should require exerciseType', () => {
-    const { exerciseType, ...rest } = validSubmission;
+    const { exerciseType: _exerciseType, ...rest } = validSubmission;
     const result = validateSubmission(rest);
     expect(result.isValid).toBe(false);
     expect(result.errors.some((e) => e.includes('exerciseType'))).toBe(true);
@@ -72,7 +72,7 @@ describe('validateSubmission', () => {
   });
 
   it('should require isCorrect boolean', () => {
-    const { isCorrect, ...rest } = validSubmission;
+    const { isCorrect: _isCorrect, ...rest } = validSubmission;
     const result = validateSubmission(rest);
     expect(result.isValid).toBe(false);
     expect(result.errors.some((e) => e.includes('isCorrect'))).toBe(true);

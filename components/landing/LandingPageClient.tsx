@@ -232,57 +232,57 @@ export default function LandingPageClient() {
 }
 
 /**
- * Audio demo component with slow/fast playback
+ * Audio demo component with clear/conversational playback
  */
 function AudioDemo() {
-  const [isPlayingSlow, setIsPlayingSlow] = useState(false);
-  const [isPlayingFast, setIsPlayingFast] = useState(false);
-  const slowAudioRef = useRef<HTMLAudioElement | null>(null);
-  const fastAudioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlayingClear, setIsPlayingClear] = useState(false);
+  const [isPlayingConversational, setIsPlayingConversational] = useState(false);
+  const clearAudioRef = useRef<HTMLAudioElement | null>(null);
+  const conversationalAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handlePlaySlow = () => {
-    if (fastAudioRef.current) {
-      fastAudioRef.current.pause();
-      fastAudioRef.current.currentTime = 0;
-      setIsPlayingFast(false);
+  const handlePlayClear = () => {
+    if (conversationalAudioRef.current) {
+      conversationalAudioRef.current.pause();
+      conversationalAudioRef.current.currentTime = 0;
+      setIsPlayingConversational(false);
     }
-    if (slowAudioRef.current) {
-      if (isPlayingSlow) {
-        slowAudioRef.current.pause();
-        setIsPlayingSlow(false);
+    if (clearAudioRef.current) {
+      if (isPlayingClear) {
+        clearAudioRef.current.pause();
+        setIsPlayingClear(false);
       } else {
-        slowAudioRef.current.play().catch(() => {
+        clearAudioRef.current.play().catch(() => {
           // Audio not available
         });
-        setIsPlayingSlow(true);
+        setIsPlayingClear(true);
       }
     }
   };
 
-  const handlePlayFast = () => {
-    if (slowAudioRef.current) {
-      slowAudioRef.current.pause();
-      slowAudioRef.current.currentTime = 0;
-      setIsPlayingSlow(false);
+  const handlePlayConversational = () => {
+    if (clearAudioRef.current) {
+      clearAudioRef.current.pause();
+      clearAudioRef.current.currentTime = 0;
+      setIsPlayingClear(false);
     }
-    if (fastAudioRef.current) {
-      if (isPlayingFast) {
-        fastAudioRef.current.pause();
-        setIsPlayingFast(false);
+    if (conversationalAudioRef.current) {
+      if (isPlayingConversational) {
+        conversationalAudioRef.current.pause();
+        setIsPlayingConversational(false);
       } else {
-        fastAudioRef.current.play().catch(() => {
+        conversationalAudioRef.current.play().catch(() => {
           // Audio not available
         });
-        setIsPlayingFast(true);
+        setIsPlayingConversational(true);
       }
     }
   };
 
-  const handleAudioEnded = (type: 'slow' | 'fast') => {
-    if (type === 'slow') {
-      setIsPlayingSlow(false);
+  const handleAudioEnded = (type: 'clear' | 'conversational') => {
+    if (type === 'clear') {
+      setIsPlayingClear(false);
     } else {
-      setIsPlayingFast(false);
+      setIsPlayingConversational(false);
     }
   };
 
@@ -297,48 +297,48 @@ function AudioDemo() {
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <Box sx={{ textAlign: 'center' }}>
           <IconButton
-            onClick={handlePlaySlow}
+            onClick={handlePlayClear}
             color="primary"
             sx={{
               bgcolor: 'primary.light',
               '&:hover': { bgcolor: 'primary.main', color: 'white' },
             }}
-            aria-label="Play slow version"
+            aria-label="Play clear version"
           >
-            {isPlayingSlow ? <PauseIcon /> : <PlayArrowIcon />}
+            {isPlayingClear ? <PauseIcon /> : <PlayArrowIcon />}
           </IconButton>
           <Typography variant="caption" display="block">
-            Slow
+            Clear
           </Typography>
         </Box>
         <Box sx={{ textAlign: 'center' }}>
           <IconButton
-            onClick={handlePlayFast}
+            onClick={handlePlayConversational}
             color="primary"
             sx={{
               bgcolor: 'primary.light',
               '&:hover': { bgcolor: 'primary.main', color: 'white' },
             }}
-            aria-label="Play fast version"
+            aria-label="Play conversational version"
           >
-            {isPlayingFast ? <PauseIcon /> : <PlayArrowIcon />}
+            {isPlayingConversational ? <PauseIcon /> : <PlayArrowIcon />}
           </IconButton>
           <Typography variant="caption" display="block">
-            Fast
+            Conversational
           </Typography>
         </Box>
       </Box>
       {/* Hidden audio elements */}
       <audio
-        ref={slowAudioRef}
-        src="/audio/demo/demo-slow.mp3"
-        onEnded={() => handleAudioEnded('slow')}
+        ref={clearAudioRef}
+        src="/audio/demo/demo-clear.mp3"
+        onEnded={() => handleAudioEnded('clear')}
         preload="none"
       />
       <audio
-        ref={fastAudioRef}
-        src="/audio/demo/demo-fast.mp3"
-        onEnded={() => handleAudioEnded('fast')}
+        ref={conversationalAudioRef}
+        src="/audio/demo/demo-conversational.mp3"
+        onEnded={() => handleAudioEnded('conversational')}
         preload="none"
       />
     </Card>

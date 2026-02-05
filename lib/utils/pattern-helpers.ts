@@ -38,8 +38,8 @@ export interface PatternDisplayData {
   exampleSentence: string;
   exampleTranscription: string;
   tips: string[];
-  audioSlowUrl: string;
-  audioFastUrl: string;
+  audioClearUrl: string;
+  audioConversationalUrl: string;
 }
 
 export function getPatternDisplayData(pattern: Pattern): PatternDisplayData {
@@ -52,7 +52,7 @@ export function getPatternDisplayData(pattern: Pattern): PatternDisplayData {
     exampleSentence: pattern.exampleSentence,
     exampleTranscription: pattern.exampleTranscription,
     tips: pattern.tips,
-    audioSlowUrl: pattern.audioSlowUrl,
-    audioFastUrl: pattern.audioFastUrl,
+    audioClearUrl: pattern.audioClearUrl,
+    audioConversationalUrl: pattern.audioConversationalUrl,
   };
 }

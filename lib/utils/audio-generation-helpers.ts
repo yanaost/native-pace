@@ -1,7 +1,7 @@
 /**
  * Audio Generation Helpers
  *
- * Utilities for generating audio files from pattern data using edge-tts.
+ * Utilities for generating audio files from pattern data.
  */
 
 import * as path from 'path';
@@ -9,19 +9,19 @@ import * as path from 'path';
 /** Output directory for generated audio files */
 export const AUDIO_OUTPUT_DIR = 'public/audio/patterns';
 
-/** Audio speed type */
-export type AudioSpeedType = 'slow' | 'fast';
+/** Audio variant type */
+export type AudioVariantType = 'clear' | 'conversational';
 
-/** Speed configuration for audio generation */
-export interface SpeedConfig {
-  rate: string; // edge-tts rate parameter
+/** Variant configuration for audio generation */
+export interface VariantConfig {
+  rate: string; // TTS rate parameter
   suffix: string; // filename suffix
 }
 
-/** Audio speed configurations */
-export const AUDIO_SPEEDS: Record<AudioSpeedType, SpeedConfig> = {
-  slow: { rate: '-30%', suffix: 'slow' },
-  fast: { rate: '+0%', suffix: 'fast' },
+/** Audio variant configurations */
+export const AUDIO_VARIANTS: Record<AudioVariantType, VariantConfig> = {
+  clear: { rate: '-30%', suffix: 'clear' },
+  conversational: { rate: '+0%', suffix: 'conversational' },
 } as const;
 
 /** Default TTS voice (American English male) */
@@ -45,19 +45,19 @@ export interface AudioPatternData {
 export interface ParsedAudioPattern {
   id: string;
   text: string;
-  slowPath: string;
-  fastPath: string;
+  clearPath: string;
+  conversationalPath: string;
 }
 
 /**
  * Generates the filename for an audio file.
  *
  * @param patternId - Pattern identifier
- * @param speed - Audio speed type
+ * @param variant - Audio variant type
  * @returns Filename with extension
  */
-export function getAudioFilename(patternId: string, speed: AudioSpeedType): string {
-  const suffix = AUDIO_SPEEDS[speed].suffix;
+export function getAudioFilename(patternId: string, variant: AudioVariantType): string {
+  const suffix = AUDIO_VARIANTS[variant].suffix;
   return `${patternId}-${suffix}.mp3`;
 }
 
@@ -65,16 +65,16 @@ export function getAudioFilename(patternId: string, speed: AudioSpeedType): stri
  * Generates the full output path for an audio file.
  *
  * @param patternId - Pattern identifier
- * @param speed - Audio speed type
+ * @param variant - Audio variant type
  * @param baseDir - Base directory (defaults to AUDIO_OUTPUT_DIR)
  * @returns Full path to output file
  */
 export function getAudioOutputPath(
   patternId: string,
-  speed: AudioSpeedType,
+  variant: AudioVariantType,
   baseDir: string = AUDIO_OUTPUT_DIR
 ): string {
-  const filename = getAudioFilename(patternId, speed);
+  const filename = getAudioFilename(patternId, variant);
   return path.join(baseDir, filename);
 }
 
@@ -140,8 +140,8 @@ export function parsePatternForAudio(pattern: unknown): ParsedAudioPattern | nul
   return {
     id: pattern.id,
     text: pattern.exampleSentence,
-    slowPath: getAudioOutputPath(pattern.id, 'slow'),
-    fastPath: getAudioOutputPath(pattern.id, 'fast'),
+    clearPath: getAudioOutputPath(pattern.id, 'clear'),
+    conversationalPath: getAudioOutputPath(pattern.id, 'conversational'),
   };
 }
 

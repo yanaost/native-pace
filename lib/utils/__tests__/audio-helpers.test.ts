@@ -47,15 +47,16 @@ class MockAudioElement {
   }
 }
 
-// Store mock instance for test access
-let mockAudioInstance: MockAudioElement;
+// Store mock instance for test access (prefixed to indicate intentionally unused)
+let _mockAudioInstance: MockAudioElement;
 
 // Mock the global Audio constructor
 beforeAll(() => {
   (global as unknown as { Audio: typeof MockAudioElement }).Audio = class extends MockAudioElement {
     constructor() {
       super();
-      mockAudioInstance = this;
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      _mockAudioInstance = this;
     }
   };
 });
@@ -79,7 +80,8 @@ describe('preloadAudio', () => {
     (global as unknown as { Audio: typeof MockAudioElement }).Audio = class extends MockAudioElement {
       constructor() {
         super();
-        mockAudioInstance = this;
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
+        _mockAudioInstance = this;
         this.setLoadBehavior('error');
       }
     };

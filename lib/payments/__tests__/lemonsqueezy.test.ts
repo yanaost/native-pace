@@ -8,7 +8,6 @@ import {
   createCheckout,
   createCheckoutForPlan,
   type CheckoutOptions,
-  type PlanType,
 } from '../lemonsqueezy';
 
 // Mock fetch

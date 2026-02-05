@@ -170,20 +170,33 @@ export async function POST(request: NextRequest): Promise<NextResponse<ProgressR
 
     // Update practice session if provided
     if (attemptData.sessionId) {
-      const { error: sessionError } = await supabase
+      // Fetch current session data
+      const { data: currentSession } = await supabase
         .from('practice_sessions')
-        .update({
-          exercises_completed: supabase.rpc('increment', { x: 1 }),
-          correct_answers: attemptData.isCorrect
-            ? supabase.rpc('increment', { x: 1 })
-            : undefined,
-        })
+        .select('exercises_completed, correct_answers')
         .eq('id', attemptData.sessionId)
-        .eq('user_id', user.id);
+        .eq('user_id', user.id)
+        .single();
 
-      if (sessionError) {
-        // Log but don't fail - session update is not critical
-        logger.warn('Failed to update practice session', { error: sessionError });
+      if (currentSession) {
+        const updateData: Record<string, number> = {
+          exercises_completed: (currentSession.exercises_completed || 0) + 1,
+        };
+
+        if (attemptData.isCorrect) {
+          updateData.correct_answers = (currentSession.correct_answers || 0) + 1;
+        }
+
+        const { error: sessionError } = await supabase
+          .from('practice_sessions')
+          .update(updateData)
+          .eq('id', attemptData.sessionId)
+          .eq('user_id', user.id);
+
+        if (sessionError) {
+          // Log but don't fail - session update is not critical
+          logger.warn('Failed to update practice session', { error: sessionError });
+        }
       }
     }
 

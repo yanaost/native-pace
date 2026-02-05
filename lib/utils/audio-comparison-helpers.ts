@@ -7,8 +7,8 @@
 /** Result of an audio comparison exercise */
 export interface AudioComparisonResult {
   patternId: string;
-  listenedSlow: boolean;
-  listenedFast: boolean;
+  listenedClear: boolean;
+  listenedConversational: boolean;
   replayCount: number;
   completed: boolean;
 }
@@ -22,8 +22,8 @@ export interface AudioComparisonResult {
 export function createInitialResult(patternId: string): AudioComparisonResult {
   return {
     patternId,
-    listenedSlow: false,
-    listenedFast: false,
+    listenedClear: false,
+    listenedConversational: false,
     replayCount: 0,
     completed: false,
   };
@@ -33,8 +33,8 @@ export function createInitialResult(patternId: string): AudioComparisonResult {
  * Checks if the user has listened to both audio versions.
  *
  * @param result - The current exercise result state
- * @returns True if both slow and fast versions have been played
+ * @returns True if both clear and conversational versions have been played
  */
 export function hasListenedToBoth(result: AudioComparisonResult): boolean {
-  return result.listenedSlow && result.listenedFast;
+  return result.listenedClear && result.listenedConversational;
 }
