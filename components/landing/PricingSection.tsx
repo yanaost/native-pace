@@ -30,6 +30,7 @@ export default function PricingSection() {
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
             gap: 3,
+            mt: 2, // Space for "MOST POPULAR" badge above card
           }}
         >
           {tiers.map((tier) => (
@@ -46,14 +47,7 @@ export default function PricingSection() {
  */
 function PricingCard({ tier }: { tier: PricingTier }) {
   return (
-    <Card
-      padding="large"
-      sx={{
-        border: tier.highlighted ? 2 : 1,
-        borderColor: tier.highlighted ? 'primary.main' : 'divider',
-        position: 'relative',
-      }}
-    >
+    <Box sx={{ position: 'relative' }}>
       {tier.highlighted && (
         <Box
           sx={{
@@ -68,11 +62,19 @@ function PricingCard({ tier }: { tier: PricingTier }) {
             borderRadius: 1,
             fontSize: '0.75rem',
             fontWeight: 'bold',
+            zIndex: 1,
           }}
         >
           MOST POPULAR
         </Box>
       )}
+      <Card
+        padding="large"
+        sx={{
+          border: tier.highlighted ? 2 : 1,
+          borderColor: tier.highlighted ? 'primary.main' : 'divider',
+        }}
+      >
 
       <Typography variant="h5" fontWeight="bold" gutterBottom>
         {tier.name}
@@ -126,5 +128,6 @@ function PricingCard({ tier }: { tier: PricingTier }) {
         </Button>
       </Link>
     </Card>
+    </Box>
   );
 }
