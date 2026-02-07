@@ -36,21 +36,45 @@ export default function LandingPageClient() {
       <Box
         component="header"
         sx={{
-          py: 1,
-          px: 3,
+          py: 1.5,
+          px: 4,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderBottom: 1,
-          borderColor: 'divider',
+          bgcolor: 'white',
+          borderTop: '4px solid',
+          borderImage: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899) 1',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
         }}
       >
-        <Image src="/logo.png" alt="NativePace" width={80} height={80} />
-        <Link href="/login" passHref legacyBehavior>
-          <Button variant="outline" size="small">
-            Login
-          </Button>
-        </Link>
+        <Image src="/logo.png" alt="NativePace" width={72} height={72} />
+        <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
+          <Link
+            href="/login"
+            style={{
+              textDecoration: 'none',
+              color: '#64748b',
+              fontWeight: 500,
+              letterSpacing: '0.05em',
+            }}
+          >
+            LOGIN
+          </Link>
+          <Link href="/signup" passHref legacyBehavior>
+            <Button
+              variant="primary"
+              size="small"
+              sx={{
+                background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+                },
+              }}
+            >
+              Get Started
+            </Button>
+          </Link>
+        </Box>
       </Box>
 
       {/* Hero Section */}

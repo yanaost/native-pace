@@ -23,23 +23,23 @@ export default function PricingPageClient() {
       <Box
         component="header"
         sx={{
-          py: 1,
-          px: 3,
+          py: 1.5,
+          px: 4,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 3,
           bgcolor: 'white',
-          borderBottom: 1,
-          borderColor: 'divider',
+          borderTop: '4px solid',
+          borderImage: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899) 1',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
         }}
       >
-        <Container maxWidth="md">
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Link href={returnTo || '/'} passHref legacyBehavior>
-              <Button variant="outline" size="small" startIcon={<ArrowBackIcon />}>
-                Back
-              </Button>
-            </Link>
-            <Image src="/logo.png" alt="NativePace" width={80} height={80} />
-          </Box>
-        </Container>
+        <Link href={returnTo || '/'} passHref legacyBehavior>
+          <Button variant="outline" size="small" startIcon={<ArrowBackIcon />}>
+            BACK
+          </Button>
+        </Link>
+        <Image src="/logo.png" alt="NativePace" width={72} height={72} />
       </Box>
 
       {/* Hero */}
