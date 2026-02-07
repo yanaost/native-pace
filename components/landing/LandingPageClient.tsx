@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -35,7 +36,7 @@ export default function LandingPageClient() {
       <Box
         component="header"
         sx={{
-          py: 2,
+          py: 1,
           px: 3,
           display: 'flex',
           justifyContent: 'space-between',
@@ -44,9 +45,7 @@ export default function LandingPageClient() {
           borderColor: 'divider',
         }}
       >
-        <Typography variant="h6" fontWeight="bold">
-          NativePace
-        </Typography>
+        <Image src="/logo.png" alt="NativePace" width={80} height={80} />
         <Link href="/login" passHref legacyBehavior>
           <Button variant="outline" size="small">
             Login

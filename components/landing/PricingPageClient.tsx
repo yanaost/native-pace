@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -22,7 +23,7 @@ export default function PricingPageClient() {
       <Box
         component="header"
         sx={{
-          py: 2,
+          py: 1,
           px: 3,
           bgcolor: 'white',
           borderBottom: 1,
@@ -36,9 +37,7 @@ export default function PricingPageClient() {
                 Back
               </Button>
             </Link>
-            <Typography variant="h6" fontWeight="bold">
-              NativePace
-            </Typography>
+            <Image src="/logo.png" alt="NativePace" width={80} height={80} />
           </Box>
         </Container>
       </Box>

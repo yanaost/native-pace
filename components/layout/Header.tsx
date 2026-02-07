@@ -11,6 +11,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Link from 'next/link';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
 
 const navLinks = [
@@ -44,15 +45,10 @@ export default function Header({ userEmail }: HeaderProps) {
 
   return (
     <AppBar position="static" color="default" elevation={1}>
-      <Toolbar>
-        <Typography
-          variant="h6"
-          component={Link}
-          href="/dashboard"
-          sx={{ textDecoration: 'none', color: 'primary.main', fontWeight: 700 }}
-        >
-          NativePace
-        </Typography>
+      <Toolbar sx={{ py: 0.5, minHeight: 'auto' }}>
+        <Link href="/dashboard">
+          <Image src="/logo.png" alt="NativePace" width={80} height={80} />
+        </Link>
 
         <Box sx={{ display: { xs: 'none', md: 'flex' }, ml: 4, gap: 2 }}>
           {navLinks.map((link) => (
