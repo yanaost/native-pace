@@ -78,32 +78,35 @@ export default function ContactPage() {
           >
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               <TextField
-                label="Name"
+                placeholder="Your name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
                 fullWidth
+                variant="outlined"
               />
               <TextField
-                label="Email"
+                placeholder="Your email"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
                 fullWidth
+                variant="outlined"
               />
               <TextField
-                label="Subject"
+                placeholder="Subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
                 required
                 fullWidth
+                variant="outlined"
               />
               <TextField
-                label="Message"
+                placeholder="Your message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
@@ -111,6 +114,7 @@ export default function ContactPage() {
                 multiline
                 rows={5}
                 fullWidth
+                variant="outlined"
               />
               <Button type="submit" variant="primary" size="large" fullWidth>
                 Send Message
