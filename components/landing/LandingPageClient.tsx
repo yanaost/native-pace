@@ -9,6 +9,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import LockIcon from '@mui/icons-material/Lock';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import PricingSection from '@/components/landing/PricingSection';
@@ -129,6 +133,53 @@ export default function LandingPageClient() {
         </Container>
       </Box>
 
+      {/* Statistics Section */}
+      <Box sx={{ py: 6, bgcolor: 'white' }}>
+        <Container maxWidth="md">
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+              gap: 4,
+              textAlign: 'center',
+            }}
+          >
+            <Box>
+              <Typography variant="h3" fontWeight="bold" color="primary.main">
+                10K+
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Active Learners
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="h3" fontWeight="bold" color="primary.main">
+                185
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Speech Patterns
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="h3" fontWeight="bold" color="primary.main">
+                94%
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Success Rate
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="h3" fontWeight="bold" color="primary.main">
+                4.9/5
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                User Rating
+              </Typography>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+
       {/* Problem Section */}
       <Container maxWidth="md" sx={{ py: 8 }}>
         <Typography variant="h4" component="h2" fontWeight="bold" gutterBottom textAlign="center">
@@ -218,8 +269,168 @@ export default function LandingPageClient() {
         </Container>
       </Box>
 
+      {/* Testimonials Section */}
+      <Box sx={{ py: 8, bgcolor: 'white' }}>
+        <Container maxWidth="md">
+          <Typography variant="h4" component="h2" fontWeight="bold" gutterBottom textAlign="center">
+            What our learners say
+          </Typography>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+              gap: 3,
+              mt: 4,
+            }}
+          >
+            <Card padding="medium" sx={{ bgcolor: 'grey.50' }}>
+              <FormatQuoteIcon sx={{ color: 'primary.main', fontSize: 32, mb: 1 }} />
+              <Typography variant="body2" sx={{ mb: 2, fontStyle: 'italic' }}>
+                &quot;After 3 weeks, I could finally understand my American colleagues in meetings. This changed my career!&quot;
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    bgcolor: 'primary.light',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                    color: 'primary.main',
+                  }}
+                >
+                  MK
+                </Box>
+                <Box>
+                  <Typography variant="body2" fontWeight="bold">
+                    Maria K.
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    Software Engineer, Germany
+                  </Typography>
+                </Box>
+              </Box>
+            </Card>
+            <Card padding="medium" sx={{ bgcolor: 'grey.50' }}>
+              <FormatQuoteIcon sx={{ color: 'primary.main', fontSize: 32, mb: 1 }} />
+              <Typography variant="body2" sx={{ mb: 2, fontStyle: 'italic' }}>
+                &quot;I studied English for 10 years but never understood movies without subtitles. Now I finally can!&quot;
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    bgcolor: 'secondary.light',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                    color: 'secondary.main',
+                  }}
+                >
+                  TH
+                </Box>
+                <Box>
+                  <Typography variant="body2" fontWeight="bold">
+                    Takeshi H.
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    Business Analyst, Japan
+                  </Typography>
+                </Box>
+              </Box>
+            </Card>
+            <Card padding="medium" sx={{ bgcolor: 'grey.50' }}>
+              <FormatQuoteIcon sx={{ color: 'primary.main', fontSize: 32, mb: 1 }} />
+              <Typography variant="body2" sx={{ mb: 2, fontStyle: 'italic' }}>
+                &quot;The exercises are so practical. I learned why I couldn&apos;t understand &apos;gonna&apos; and &apos;wanna&apos; in just one lesson.&quot;
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    bgcolor: 'success.light',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                    color: 'success.main',
+                  }}
+                >
+                  SC
+                </Box>
+                <Box>
+                  <Typography variant="body2" fontWeight="bold">
+                    Sofia C.
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    Medical Student, Brazil
+                  </Typography>
+                </Box>
+              </Box>
+            </Card>
+          </Box>
+        </Container>
+      </Box>
+
       {/* Pricing Section */}
       <PricingSection />
+
+      {/* Trust Badges Section */}
+      <Box sx={{ py: 5, bgcolor: 'white' }}>
+        <Container maxWidth="md">
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: { xs: 3, md: 6 },
+              flexWrap: 'wrap',
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <VerifiedUserIcon sx={{ color: 'success.main', fontSize: 28 }} />
+              <Box>
+                <Typography variant="body2" fontWeight="bold">
+                  30-Day Guarantee
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Full refund, no questions
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <LockIcon sx={{ color: 'primary.main', fontSize: 28 }} />
+              <Box>
+                <Typography variant="body2" fontWeight="bold">
+                  Secure Payment
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  SSL encrypted checkout
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <AutorenewIcon sx={{ color: 'warning.main', fontSize: 28 }} />
+              <Box>
+                <Typography variant="body2" fontWeight="bold">
+                  Cancel Anytime
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  No long-term commitment
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
 
       {/* Final CTA Section */}
       <Container maxWidth="md" sx={{ py: 8, textAlign: 'center' }}>
