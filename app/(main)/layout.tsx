@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import Box from '@mui/material/Box';
 import { createClient } from '@/lib/supabase/server';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import MobileNav from '@/components/layout/MobileNav';
 
 export default async function MainLayout({
@@ -27,6 +28,9 @@ export default async function MainLayout({
         }}
       >
         {children}
+      </Box>
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+        <Footer />
       </Box>
       <MobileNav />
     </Box>
