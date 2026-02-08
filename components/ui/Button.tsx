@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import MuiButton, { ButtonProps as MuiButtonProps } from '@mui/material/Button';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline';
@@ -14,7 +15,13 @@ const variantMap: Record<ButtonVariant, { variant: MuiButtonProps['variant']; co
   outline: { variant: 'outlined', color: 'primary' },
 };
 
-export default function Button({ variant = 'primary', size = 'medium', ...props }: ButtonProps) {
-  const { variant: muiVariant, color } = variantMap[variant];
-  return <MuiButton variant={muiVariant} color={color} size={size} {...props} />;
-}
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = 'primary', size = 'medium', ...props }, ref) => {
+    const { variant: muiVariant, color } = variantMap[variant];
+    return <MuiButton ref={ref} variant={muiVariant} color={color} size={size} {...props} />;
+  }
+);
+
+Button.displayName = 'Button';
+
+export default Button;
