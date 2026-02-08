@@ -1,0 +1,52 @@
+[
+  {
+    "id": "assimilation-doncha",
+    "exampleSentence": "Don't you think so?",
+    "exampleTranscription": "Doncha think so?"
+  },
+  {
+    "id": "assimilation-wontcha",
+    "exampleSentence": "Won't you stay?",
+    "exampleTranscription": "Wontcha stay?"
+  },
+  {
+    "id": "assimilation-couldja",
+    "exampleSentence": "Could you help me?",
+    "exampleTranscription": "Couldja help me?"
+  },
+  {
+    "id": "assimilation-wouldja",
+    "exampleSentence": "Would you like some?",
+    "exampleTranscription": "Wouldja like some?"
+  },
+  {
+    "id": "assimilation-didja",
+    "exampleSentence": "Did you see that?",
+    "exampleTranscription": "Didja see that?"
+  },
+  {
+    "id": "assimilation-gotcha",
+    "exampleSentence": "I got you!",
+    "exampleTranscription": "Gotcha!"
+  },
+  {
+    "id": "assimilation-betcha",
+    "exampleSentence": "I bet you can't!",
+    "exampleTranscription": "I betcha can't!"
+  },
+  {
+    "id": "assimilation-letcha",
+    "exampleSentence": "I'll let you know.",
+    "exampleTranscription": "I'll letcha know."
+  },
+  {
+    "id": "assimilation-meetcha",
+    "exampleSentence": "Nice to meet you!",
+    "exampleTranscription": "Nice to meetcha!"
+  },
+  {
+    "id": "assimilation-whatcha",
+    "exampleSentence": "What are you doing?",
+    "exampleTranscription": "Whatcha doing?"
+  }
+]

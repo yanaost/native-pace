@@ -1,242 +1,102 @@
 [
   {
-    "id": "weak-form-to",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'to'",
-    "description": "In natural speech, the preposition 'to' reduces from /tuː/ to /tə/. This weak form is used in almost all unstressed positions.",
-    "phoneticClear": "/tuː/",
-    "phoneticReduced": "/tə/",
+    "id": "weak-to",
     "exampleSentence": "I need to go to the store.",
-    "exampleTranscription": "I need tə go tə the store.",
-    "audioClearUrl": "/audio/patterns/weak-form-to-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-to-conversational.mp3",
-    "tips": [
-      "The vowel becomes a quick schwa sound",
-      "Only stressed 'to' keeps the full /tuː/ sound",
-      "Listen for this in phrases like 'to the', 'to a', 'going to'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 9
+    "exampleTranscription": "I need tə go tə the store."
   },
   {
-    "id": "weak-form-for",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'for'",
-    "description": "The preposition 'for' reduces from /fɔːr/ to /fər/ in unstressed positions. This is one of the most common weak forms.",
-    "phoneticClear": "/fɔːr/",
-    "phoneticReduced": "/fər/",
+    "id": "weak-for",
     "exampleSentence": "This is for you.",
-    "exampleTranscription": "This is fər you.",
-    "audioClearUrl": "/audio/patterns/weak-form-for-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-for-conversational.mp3",
-    "tips": [
-      "The vowel shortens to a schwa",
-      "Common in 'for a', 'for the', 'waiting for'",
-      "Only emphatic 'for' keeps the full pronunciation"
-    ],
-    "difficulty": 1,
-    "orderIndex": 10
+    "exampleTranscription": "This is fər you."
   },
   {
-    "id": "weak-form-of",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'of'",
-    "description": "The preposition 'of' reduces from /ʌv/ to /əv/ or even just /ə/. The 'v' often disappears completely in fast speech.",
-    "phoneticClear": "/ʌv/",
-    "phoneticReduced": "/əv/ or /ə/",
+    "id": "weak-of",
     "exampleSentence": "A cup of coffee.",
-    "exampleTranscription": "A cup əv coffee.",
-    "audioClearUrl": "/audio/patterns/weak-form-of-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-of-conversational.mp3",
-    "tips": [
-      "The vowel becomes a schwa",
-      "In fast speech, may sound like just 'uh'",
-      "Common in 'kind of', 'sort of', 'cup of'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 11
+    "exampleTranscription": "A cup əv coffee."
   },
   {
-    "id": "weak-form-and",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'and'",
-    "description": "The conjunction 'and' reduces from /ænd/ to /ənd/, /ən/, or even just /n/. This is extremely common in connected speech.",
-    "phoneticClear": "/ænd/",
-    "phoneticReduced": "/ən/ or /n/",
+    "id": "weak-and",
     "exampleSentence": "Bread and butter.",
-    "exampleTranscription": "Bread n butter.",
-    "audioClearUrl": "/audio/patterns/weak-form-and-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-and-conversational.mp3",
-    "tips": [
-      "Often reduced to just 'n' between words",
-      "The 'd' usually disappears completely",
-      "Listen for it in 'rock and roll', 'come and go'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 12
+    "exampleTranscription": "Bread n butter."
   },
   {
-    "id": "weak-form-the",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'the'",
-    "description": "The article 'the' has two weak forms: /ðə/ before consonants and /ði/ before vowels. The full /ðiː/ is rare.",
-    "phoneticClear": "/ðiː/",
-    "phoneticReduced": "/ðə/ or /ði/",
+    "id": "weak-the",
     "exampleSentence": "The book is on the table.",
-    "exampleTranscription": "Thə book is on thə table.",
-    "audioClearUrl": "/audio/patterns/weak-form-the-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-the-conversational.mp3",
-    "tips": [
-      "Use /ðə/ before consonant sounds",
-      "Use /ði/ before vowel sounds",
-      "The full /ðiː/ only for emphasis"
-    ],
-    "difficulty": 1,
-    "orderIndex": 13
+    "exampleTranscription": "Thə book is on thə table."
   },
   {
-    "id": "weak-form-a",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'a'",
-    "description": "The article 'a' reduces from /eɪ/ to just /ə/ (schwa). This is the default pronunciation in natural speech.",
-    "phoneticClear": "/eɪ/",
-    "phoneticReduced": "/ə/",
-    "exampleSentence": "I saw a cat.",
-    "exampleTranscription": "I saw ə cat.",
-    "audioClearUrl": "/audio/patterns/weak-form-a-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-a-conversational.mp3",
-    "tips": [
-      "The full /eɪ/ is only used for emphasis",
-      "Sounds like a very quick 'uh'",
-      "This is the most common weak form in English"
-    ],
-    "difficulty": 1,
-    "orderIndex": 14
+    "id": "weak-a",
+    "exampleSentence": "I saw a movie.",
+    "exampleTranscription": "I saw ə movie."
   },
   {
-    "id": "weak-form-him",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'him'",
-    "description": "The pronoun 'him' reduces from /hɪm/ to /ɪm/, dropping the 'h' sound completely in unstressed positions.",
-    "phoneticClear": "/hɪm/",
-    "phoneticReduced": "/ɪm/",
-    "exampleSentence": "Give it to him.",
-    "exampleTranscription": "Give it to 'im.",
-    "audioClearUrl": "/audio/patterns/weak-form-him-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-him-conversational.mp3",
-    "tips": [
-      "The 'h' drops in unstressed positions",
-      "Common after verbs: 'tell him', 'ask him', 'give him'",
-      "Only emphatic 'him' keeps the 'h'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 15
+    "id": "weak-him",
+    "exampleSentence": "Tell him to come.",
+    "exampleTranscription": "Tell im to come."
   },
   {
-    "id": "weak-form-her",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'her'",
-    "description": "The pronoun 'her' reduces from /hɜːr/ to /ər/, dropping the 'h' sound. This is standard in connected speech.",
-    "phoneticClear": "/hɜːr/",
-    "phoneticReduced": "/ər/",
+    "id": "weak-her",
     "exampleSentence": "I told her the news.",
-    "exampleTranscription": "I told 'er the news.",
-    "audioClearUrl": "/audio/patterns/weak-form-her-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-her-conversational.mp3",
-    "tips": [
-      "The 'h' drops in unstressed positions",
-      "Sounds like 'er' or even just 'r'",
-      "Common in 'give her', 'tell her', 'ask her'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 16
+    "exampleTranscription": "I told er the news."
   },
   {
-    "id": "weak-form-them",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'them'",
-    "description": "The pronoun 'them' reduces from /ðem/ to /ðəm/ or /əm/, with the 'th' often weakening or disappearing.",
-    "phoneticClear": "/ðem/",
-    "phoneticReduced": "/əm/",
+    "id": "weak-them",
     "exampleSentence": "Tell them to wait.",
-    "exampleTranscription": "Tell 'em to wait.",
-    "audioClearUrl": "/audio/patterns/weak-form-them-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-them-conversational.mp3",
-    "tips": [
-      "Often sounds like just 'em'",
-      "The 'th' may disappear completely",
-      "Common in 'tell them', 'give them', 'let them'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 17
+    "exampleTranscription": "Tell em to wait."
   },
   {
-    "id": "weak-form-can",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'can'",
-    "description": "The modal verb 'can' reduces from /kæn/ to /kən/ in positive sentences. Note: 'can't' always stays strong.",
-    "phoneticClear": "/kæn/",
-    "phoneticReduced": "/kən/",
+    "id": "weak-can",
     "exampleSentence": "I can help you.",
-    "exampleTranscription": "I kən help you.",
-    "audioClearUrl": "/audio/patterns/weak-form-can-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-can-conversational.mp3",
-    "tips": [
-      "Positive 'can' uses the weak form",
-      "Negative 'can't' always stays strong",
-      "This helps distinguish 'can' from 'can't' in speech"
-    ],
-    "difficulty": 1,
-    "orderIndex": 18
+    "exampleTranscription": "I kən help you."
   },
   {
-    "id": "weak-form-was",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'was'",
-    "description": "The verb 'was' reduces from /wʌz/ to /wəz/ in unstressed positions, with the vowel becoming a schwa.",
-    "phoneticClear": "/wʌz/",
-    "phoneticReduced": "/wəz/",
+    "id": "weak-was",
     "exampleSentence": "She was happy.",
-    "exampleTranscription": "She wəz happy.",
-    "audioClearUrl": "/audio/patterns/weak-form-was-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-was-conversational.mp3",
-    "tips": [
-      "The vowel becomes a quick schwa",
-      "Only emphatic 'was' keeps the full sound",
-      "Common in 'it was', 'there was', 'she was'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 19
+    "exampleTranscription": "She wəz happy."
   },
   {
-    "id": "weak-form-were",
-    "category": "weak-forms",
-    "level": 1,
-    "title": "The weak form of 'were'",
-    "description": "The verb 'were' reduces from /wɜːr/ to /wər/ in unstressed positions, similar to 'her' becoming 'er'.",
-    "phoneticClear": "/wɜːr/",
-    "phoneticReduced": "/wər/",
+    "id": "weak-were",
     "exampleSentence": "They were late.",
-    "exampleTranscription": "They wər late.",
-    "audioClearUrl": "/audio/patterns/weak-form-were-clear.mp3",
-    "audioConversationalUrl": "/audio/patterns/weak-form-were-conversational.mp3",
-    "tips": [
-      "The vowel shortens significantly",
-      "Sounds similar to 'were' rhyming with 'her'",
-      "Common in 'we were', 'they were', 'you were'"
-    ],
-    "difficulty": 1,
-    "orderIndex": 20
+    "exampleTranscription": "They wər late."
+  },
+  {
+    "id": "weak-are",
+    "exampleSentence": "Where are you going?",
+    "exampleTranscription": "Where ər you going?"
+  },
+  {
+    "id": "weak-have",
+    "exampleSentence": "I have seen it.",
+    "exampleTranscription": "I əv seen it."
+  },
+  {
+    "id": "weak-has",
+    "exampleSentence": "She has been there.",
+    "exampleTranscription": "She əz been there."
+  },
+  {
+    "id": "weak-had",
+    "exampleSentence": "I had already left.",
+    "exampleTranscription": "I əd already left."
+  },
+  {
+    "id": "weak-do",
+    "exampleSentence": "What do you want?",
+    "exampleTranscription": "What də you want?"
+  },
+  {
+    "id": "weak-does",
+    "exampleSentence": "What does she want?",
+    "exampleTranscription": "What dəz she want?"
+  },
+  {
+    "id": "weak-at",
+    "exampleSentence": "Look at this!",
+    "exampleTranscription": "Look ət this!"
+  },
+  {
+    "id": "weak-from",
+    "exampleSentence": "I'm from Brazil.",
+    "exampleTranscription": "I'm frəm Brazil."
   }
 ]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "linking-cv-turnoff",
+    "exampleSentence": "Turn off the light.",
+    "exampleTranscription": "Tur-noff the light."
+  },
+  {
+    "id": "linking-cv-pickup",
+    "exampleSentence": "Pick up the phone.",
+    "exampleTranscription": "Pi-kup the phone."
+  },
+  {
+    "id": "linking-cv-itis",
+    "exampleSentence": "It is important.",
+    "exampleTranscription": "I-tis important."
+  },
+  {
+    "id": "linking-cv-checkit",
+    "exampleSentence": "Check it out!",
+    "exampleTranscription": "Che-kit out!"
+  },
+  {
+    "id": "linking-cv-notat",
+    "exampleSentence": "I'm not at home.",
+    "exampleTranscription": "I'm no-tat home."
+  },
+  {
+    "id": "linking-vv-goout",
+    "exampleSentence": "Let's go out tonight.",
+    "exampleTranscription": "Let's go-wout tonight."
+  },
+  {
+    "id": "linking-vv-seeit",
+    "exampleSentence": "I can see it.",
+    "exampleTranscription": "I can see-yit."
+  },
+  {
+    "id": "linking-vv-doaway",
+    "exampleSentence": "Do away with it.",
+    "exampleTranscription": "Do-waway with it."
+  },
+  {
+    "id": "linking-r-heris",
+    "exampleSentence": "Her eyes are blue.",
+    "exampleTranscription": "Her-eyes are blue."
+  },
+  {
+    "id": "linking-r-forinstance",
+    "exampleSentence": "For instance, this one.",
+    "exampleTranscription": "For-instance, this one."
+  }
+]
