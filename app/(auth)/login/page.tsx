@@ -11,6 +11,8 @@ import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import { signInWithEmail, signInWithGoogle } from '@/lib/supabase/auth';
+import { trackLoginCompleted } from '@/lib/analytics/track';
+import { identifyUser } from '@/lib/analytics/posthog';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -24,12 +26,16 @@ export default function LoginPage() {
     setError(null);
     setLoading(true);
 
-    const { error } = await signInWithEmail(email, password);
+    const { data, error } = await signInWithEmail(email, password);
 
     if (error) {
       setError(error.message);
       setLoading(false);
     } else {
+      if (data?.user?.id) {
+        identifyUser(data.user.id, { email: data.user.email });
+        trackLoginCompleted(data.user.id, 'email');
+      }
       router.push('/dashboard');
     }
   };

@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import type { Metadata, Viewport } from 'next';
 import ThemeRegistry from '@/lib/theme/ThemeRegistry';
+import PostHogProvider from '@/components/providers/PostHogProvider';
 import {
   SITE_NAME,
   DEFAULT_DESCRIPTION,
@@ -81,7 +83,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <Suspense fallback={null}>
+            <PostHogProvider>{children}</PostHogProvider>
+          </Suspense>
+        </ThemeRegistry>
       </body>
     </html>
   );

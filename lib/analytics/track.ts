@@ -39,6 +39,20 @@ export function trackSignupCompleted(userId: string, method: AuthMethod): void {
 }
 
 /**
+ * Track when user logs in.
+ */
+export function trackLoginCompleted(userId: string, method: AuthMethod): void {
+  trackEvent(ANALYTICS_EVENTS.LOGIN_COMPLETED, { userId, method });
+}
+
+/**
+ * Track when user logs out.
+ */
+export function trackLogout(): void {
+  trackEvent(ANALYTICS_EVENTS.LOGOUT, {});
+}
+
+/**
  * Track onboarding step completion.
  */
 export function trackOnboardingStep(step: number, stepName: string): void {

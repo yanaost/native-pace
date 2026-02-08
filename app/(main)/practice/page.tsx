@@ -37,6 +37,12 @@ import type { AudioComparisonResult } from '@/lib/utils/audio-comparison-helpers
 import type { DiscriminationResult } from '@/lib/utils/discrimination-helpers';
 import type { DictationResult } from '@/lib/utils/dictation-helpers';
 import type { SpeedTrainingResult } from '@/lib/utils/speed-training-helpers';
+import {
+  trackPatternViewed,
+  trackExerciseStarted,
+  trackExerciseAnswered,
+  trackPatternCompleted,
+} from '@/lib/analytics/track';
 
 function PracticePageContent() {
   const router = useRouter();
@@ -100,6 +106,7 @@ function PracticePageContent() {
       setPattern(loadedPattern);
       setSessionState(createSessionState(patternId));
       setIsLoading(false);
+      trackPatternViewed(patternId, loadedPattern.level);
     }
 
     loadPattern();
@@ -144,65 +151,74 @@ function PracticePageContent() {
   }, [patternId]);
 
   const handlePatternViewNext = useCallback(() => {
-    if (!sessionState) return;
+    if (!sessionState || !pattern) return;
+    trackExerciseStarted('comparison', pattern.id);
     setSessionState(advanceStep(sessionState));
-  }, [sessionState]);
+  }, [sessionState, pattern]);
 
   const handleComparisonComplete = useCallback(
     (result: AudioComparisonResult) => {
-      if (!sessionState) return;
+      if (!sessionState || !pattern) return;
       const exerciseResult: ExerciseSessionResult = {
         exerciseType: 'comparison',
         isCorrect: result.completed,
         responseTimeMs: 0, // AudioComparison doesn't track time the same way
       };
+      trackExerciseAnswered('comparison', pattern.id, result.completed, 0);
+      trackExerciseStarted('discrimination', pattern.id);
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
       saveProgress('comparison', result.completed, 0);
     },
-    [sessionState, saveProgress]
+    [sessionState, saveProgress, pattern]
   );
 
   const handleDiscriminationComplete = useCallback(
     (result: DiscriminationResult) => {
-      if (!sessionState) return;
+      if (!sessionState || !pattern) return;
       const exerciseResult: ExerciseSessionResult = {
         exerciseType: 'discrimination',
         isCorrect: result.isCorrect,
         responseTimeMs: result.responseTimeMs,
       };
+      trackExerciseAnswered('discrimination', pattern.id, result.isCorrect, result.responseTimeMs);
+      trackExerciseStarted('dictation', pattern.id);
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
       saveProgress('discrimination', result.isCorrect, result.responseTimeMs);
     },
-    [sessionState, saveProgress]
+    [sessionState, saveProgress, pattern]
   );
 
   const handleDictationComplete = useCallback(
     (result: DictationResult) => {
-      if (!sessionState) return;
+      if (!sessionState || !pattern) return;
       const exerciseResult: ExerciseSessionResult = {
         exerciseType: 'dictation',
         isCorrect: result.isCorrect,
         responseTimeMs: result.responseTimeMs,
       };
+      trackExerciseAnswered('dictation', pattern.id, result.isCorrect, result.responseTimeMs);
+      trackExerciseStarted('speed', pattern.id);
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
       saveProgress('dictation', result.isCorrect, result.responseTimeMs, result.userInput);
     },
-    [sessionState, saveProgress]
+    [sessionState, saveProgress, pattern]
   );
 
   const handleSpeedComplete = useCallback(
     (result: SpeedTrainingResult) => {
-      if (!sessionState) return;
+      if (!sessionState || !pattern) return;
       const isCorrect = result.comfortableSpeed >= 1.0; // Consider "correct" if comfortable at normal speed
       const exerciseResult: ExerciseSessionResult = {
         exerciseType: 'speed',
         isCorrect,
         responseTimeMs: result.responseTimeMs,
       };
+      trackExerciseAnswered('speed', pattern.id, isCorrect, result.responseTimeMs);
+      trackPatternCompleted(pattern.id, pattern.level);
       setSessionState(recordExerciseResult(sessionState, exerciseResult));
       saveProgress('speed', isCorrect, result.responseTimeMs);
     },
-    [sessionState, saveProgress]
+    [sessionState, saveProgress, pattern]
   );
 
   const handleFinish = useCallback(() => {

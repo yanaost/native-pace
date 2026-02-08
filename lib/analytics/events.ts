@@ -10,6 +10,8 @@ export const ANALYTICS_EVENTS = {
   // Onboarding
   SIGNUP_STARTED: 'signup_started',
   SIGNUP_COMPLETED: 'signup_completed',
+  LOGIN_COMPLETED: 'login_completed',
+  LOGOUT: 'logout',
   ONBOARDING_STEP: 'onboarding_step',
 
   // Learning

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -8,15 +9,43 @@ import CheckIcon from '@mui/icons-material/Check';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import { getPricingTiers, type PricingTier } from '@/lib/utils/pricing-helpers';
+import { trackPaywallViewed, trackCheckoutStarted, type PlanType } from '@/lib/analytics/track';
 
 /**
  * Pricing section for landing page showing free and premium tiers
  */
 export default function PricingSection() {
   const tiers = getPricingTiers();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const hasTrackedView = useRef(false);
+
+  // Track when pricing section becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasTrackedView.current) {
+          trackPaywallViewed('landing_page');
+          hasTrackedView.current = true;
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleCtaClick = useCallback((tierId: string) => {
+    if (tierId === 'premium') {
+      trackCheckoutStarted('monthly' as PlanType);
+    }
+  }, []);
 
   return (
-    <Box sx={{ py: 8 }} id="pricing">
+    <Box ref={sectionRef} sx={{ py: 8 }} id="pricing">
       <Container maxWidth="md">
         <Typography variant="h4" component="h2" fontWeight="bold" gutterBottom textAlign="center">
           Simple pricing
@@ -34,7 +63,7 @@ export default function PricingSection() {
           }}
         >
           {tiers.map((tier) => (
-            <PricingCard key={tier.id} tier={tier} />
+            <PricingCard key={tier.id} tier={tier} onCtaClick={handleCtaClick} />
           ))}
         </Box>
       </Container>
@@ -45,7 +74,7 @@ export default function PricingSection() {
 /**
  * Individual pricing card
  */
-function PricingCard({ tier }: { tier: PricingTier }) {
+function PricingCard({ tier, onCtaClick }: { tier: PricingTier; onCtaClick: (tierId: string) => void }) {
   return (
     <Box sx={{ position: 'relative' }}>
       {tier.highlighted && (
@@ -123,6 +152,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
           variant={tier.highlighted ? 'primary' : 'outline'}
           fullWidth
           size="large"
+          onClick={() => onCtaClick(tier.id)}
         >
           {tier.cta}
         </Button>

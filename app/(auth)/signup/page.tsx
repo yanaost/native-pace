@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import { signUpWithEmail, signInWithGoogle } from '@/lib/supabase/auth';
+import { trackSignupStarted, trackSignupCompleted } from '@/lib/analytics/track';
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
@@ -22,13 +23,17 @@ export default function SignupPage() {
     e.preventDefault();
     setError(null);
     setLoading(true);
+    trackSignupStarted('email');
 
-    const { error } = await signUpWithEmail(email, password);
+    const { data, error } = await signUpWithEmail(email, password);
 
     if (error) {
       setError(error.message);
       setLoading(false);
     } else {
+      if (data?.user?.id) {
+        trackSignupCompleted(data.user.id, 'email');
+      }
       setSuccess(true);
       setLoading(false);
     }
@@ -36,11 +41,12 @@ export default function SignupPage() {
 
   const handleGoogleSignup = async () => {
     setError(null);
+    trackSignupStarted('google');
     const { error } = await signInWithGoogle();
     if (error) {
       setError(error.message);
     }
-    // OAuth redirects automatically, no need to handle success here
+    // OAuth redirects automatically, tracking will happen on callback
   };
 
   if (success) {
