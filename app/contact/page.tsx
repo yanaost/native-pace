@@ -78,7 +78,7 @@ export default function ContactPage() {
           >
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               <TextField
-                placeholder="Your name"
+                placeholder="Name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 variant="outlined"
               />
               <TextField
-                placeholder="Your email"
+                placeholder="Email"
                 name="email"
                 type="email"
                 value={formData.email}
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 variant="outlined"
               />
               <TextField
-                placeholder="Your message"
+                placeholder="Message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
